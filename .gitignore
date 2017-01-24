@@ -1,0 +1,7 @@
+.settings
+target
+.classpath
+.project
+twitter4j.properties
+jdbc.properties
+!.gitkeep

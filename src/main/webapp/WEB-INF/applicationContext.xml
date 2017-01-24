@@ -1,0 +1,76 @@
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc.xsd
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/tx
+  http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/aop
+  http://www.springframework.org/schema/aop/spring-aop.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+  <context:component-scan base-package="com.github.q9029.aikatsustars"/>
+  <context:annotation-config/>
+
+  <mvc:annotation-driven/>
+  <mvc:resources mapping="/css/**" location="/css/"/>
+  <mvc:resources mapping="/img/**" location="/img/"/>
+  <mvc:resources mapping="/js/**" location="/js/"/>
+
+  <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <beans:property name="prefix" value="/WEB-INF/views/"/>
+  </beans:bean>
+
+  <!-- Properties -->
+  <beans:bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <beans:property name="locations">
+      <beans:list>
+        <beans:value>classpath:app.properties</beans:value>
+      </beans:list>
+    </beans:property>
+  </beans:bean>
+  <beans:bean id="contextProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <beans:property name="locations">
+      <beans:list>
+        <beans:value>classpath:jdbc.properties</beans:value>
+      </beans:list>
+    </beans:property>
+  </beans:bean>
+  <context:property-placeholder properties-ref="contextProperties"/>
+
+  <!-- DatabaseAccess -->
+  <beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+    <beans:property name="driverClassName" value="${jdbc.driverClassName}"/>
+    <beans:property name="url" value="${jdbc.url}"/>
+    <beans:property name="username" value="${jdbc.username}"/>
+    <beans:property name="password" value="${jdbc.password}"/>
+    <beans:property name="initialSize" value="${jdbc.initialSize}"/>
+    <beans:property name="maxTotal" value="${jdbc.maxTotal}"/>
+    <beans:property name="maxIdle" value="${jdbc.maxIdle}"/>
+    <beans:property name="maxWaitMillis" value="${jdbc.maxWaitMillis}"/>
+    <beans:property name="validationQuery" value="${jdbc.validationQuery}"/>
+  </beans:bean>
+  <beans:bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    <beans:property name="dataSource" ref="dataSource"/>
+  </beans:bean>
+
+  <!-- TransactionManager -->
+  <aop:aspectj-autoproxy/>
+  <beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <beans:property name="dataSource" ref="dataSource"/>
+  </beans:bean>
+  <aop:config>
+    <aop:advisor pointcut="execution(* com.github.q9029.aikatsustars.service.*.*(..))" advice-ref="transactionAdvice"/>
+  </aop:config>
+  <tx:advice id="transactionAdvice" transaction-manager="transactionManager">
+    <tx:attributes>
+      <tx:method name="*" rollback-for="java.lang.Exception"/>
+    </tx:attributes>
+  </tx:advice>
+</beans:beans>
