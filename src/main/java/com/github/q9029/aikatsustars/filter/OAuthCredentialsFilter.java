@@ -9,7 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-public class OAuthFilter implements Filter {
+public class OAuthCredentialsFilter implements Filter {
 
 //    /**
 //     * ロガー.

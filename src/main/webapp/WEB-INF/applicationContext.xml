@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:mvc="http://www.springframework.org/schema/mvc"
   xmlns:beans="http://www.springframework.org/schema/beans"
@@ -73,4 +74,19 @@
       <tx:method name="*" rollback-for="java.lang.Exception"/>
     </tx:attributes>
   </tx:advice>
+
+  <!-- ProxyLogging -->
+  <aop:config>
+    <aop:aspect ref="loggerProxy">
+      <aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.aikatsustars.controller.*.*(..))"/>
+      <aop:before pointcut-ref="pointcutController" method="beforeMethod"/>
+      <aop:before pointcut-ref="pointcutController" method="afterMethod"/>
+      <aop:pointcut id="pointcutService" expression="execution(* com.github.q9029.aikatsustars.service.*.*(..))"/>
+      <aop:before pointcut-ref="pointcutService" method="beforeMethod"/>
+      <aop:before pointcut-ref="pointcutService" method="afterMethod"/>
+      <aop:pointcut id="pointcutDao" expression="execution(* com.github.q9029.aikatsustars.dao.*.*(..))"/>
+      <aop:before pointcut-ref="pointcutDao" method="beforeMethod"/>
+      <aop:before pointcut-ref="pointcutDao" method="afterMethod"/>
+    </aop:aspect>
+  </aop:config>
 </beans:beans>

@@ -14,6 +14,10 @@ public class ControllerConst {
 
         public static final String INDEX = "/";
 
+        public static final String SIGNIN = "/signin";
+
+        public static final String CALLBACK = "/callback";
+
         public static final String OTHERS = "/**";
     }
 
@@ -24,6 +28,8 @@ public class ControllerConst {
     public class View {
 
         public static final String INDEX = "index.jsp";
+
+        public static final String SIGNIN = "signin.jsp";
 
         public static final String ERROR = "404.jsp";
     }

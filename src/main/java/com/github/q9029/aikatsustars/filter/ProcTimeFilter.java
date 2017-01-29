@@ -32,7 +32,7 @@ public class ProcTimeFilter implements Filter {
         long endTime = System.nanoTime();
 
         // ログ出力
-        LOG.info("ProcessTime : " + (endTime - startTime) + " ns");
+        LOG.info("ProcessTime " + (endTime - startTime) + "ns");
     }
 
     @Override
