@@ -8,76 +8,63 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+
+import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+
+import twitter4j.Twitter;
+import twitter4j.TwitterException;
 
 public class OAuthCredentialsFilter implements Filter {
 
-//    /**
-//     * ロガー.
-//     */
-//    private static final Logger LOG = Logger.getLogger(OAuthFilter.class);
+    /**
+     * ロガー.
+     */
+    private static final Logger LOG = Logger.getLogger(OAuthCredentialsFilter.class);
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-//        // セッション
-//        HttpSession session = null;
-//
-//        try {
-//            LOG.debug("start doFilter");
-//
-//            // セッションの取得
-//            session = ((HttpServletRequest) request).getSession();
-//
-//            // セッションにTwitterインスタンスが存在する場合
-//            if (session.getAttribute(ControllerConst.Session.TWITTER) != null) {
-//
-//                // セッションにリクエストトークンが存在しない場合
-//                if (session.getAttribute(ControllerConst.Session.TWITTER_REQUEST_TOKEN) == null) {
-//
-//                    // Twitterインスタンスを取得する
-//                    Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
-//
-//                    // 有効性確認
-//                    twitter.verifyCredentials();
-//                }
-//            }
+        HttpSession session = null;
 
-            // CookieからOAuthTokenの取得
-            // if () {
-            // Twitterの新規インスタンスを取得する。
-            // Twitter twitter = new TwitterFactory().getInstance();
-            // CookieからAccessTokenの取得
-            // twitter.setOAuthAccessToken(new AccessToken(null, null));
-            // 有効性確認
-            // twitter.verifyCredentials();
-            // セッションにTwitterのインスタンスを登録する。
-            // request.getSession().setAttribute(ServletConst.Session.TWITTER,
-            // twitter);
-            // }
+        try {
+            // HttpSessionの取得
+            session = ((HttpServletRequest) request).getSession();
+
+            // OAuth有効性確認
+            Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
+            twitter.verifyCredentials();
 
             // 処理を継続
             chain.doFilter(request, response);
 
-//        } catch (Exception e) {
-//            // ((HttpServletResponse) response).sendError(503);
-//
-//            LOG.info("Invalid or expired token.");
-//            LOG.trace("", e);
-//
-//            // セッションがNULLでない場合
-//            if (session != null) {
-//                // セッションを破棄する
-//                session.invalidate();
-//            }
-//
-//            // リダイレクトする
-//            ((HttpServletResponse) response).sendRedirect("/");
-//
-//        } catch (Error e) {
-//            ((HttpServletResponse) response).sendError(503);
-//            LOG.fatal("", e);
-//        }
+        } catch (TwitterException e) {
+            LOG.error("Invalid OAuth access token.", e);
+
+            // セッションの破棄
+            if (session != null) {
+                session.invalidate();
+            }
+
+            // signinへリダイレクト
+            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.SIGNIN);
+
+        } catch (Exception e) {
+            LOG.error("Invalid session.", e);
+
+            // セッションの破棄
+            if (session != null) {
+                session.invalidate();
+            }
+
+            // signinへリダイレクト
+            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.SIGNIN);
+        }
     }
 
     @Override

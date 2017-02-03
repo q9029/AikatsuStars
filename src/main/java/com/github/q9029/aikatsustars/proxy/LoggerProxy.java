@@ -10,18 +10,18 @@ public class LoggerProxy {
     private static final Logger LOG = Logger.getLogger(LoggerProxy.class);
 
     public void beforeMethod(JoinPoint joinPoint) {
-        if (LOG.isDebugEnabled()) {
+        if (LOG.isTraceEnabled()) {
             String cName = joinPoint.getTarget().getClass().getSimpleName();
             String mName = joinPoint.getSignature().getName();
-            LOG.debug("Start " + cName + "." + mName + "()");
+            LOG.trace("Start " + cName + "." + mName + "()");
         }
     }
 
     public void afterMethod(JoinPoint joinPoint) {
-        if (LOG.isDebugEnabled()) {
+        if (LOG.isTraceEnabled()) {
             String cName = joinPoint.getTarget().getClass().getSimpleName();
             String mName = joinPoint.getSignature().getName();
-            LOG.debug("End " + cName + "." + mName + "()");
+            LOG.trace("End " + cName + "." + mName + "()");
         }
     }
 }

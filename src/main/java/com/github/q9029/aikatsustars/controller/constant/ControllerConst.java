@@ -29,6 +29,8 @@ public class ControllerConst {
 
         public static final String INDEX = "index.jsp";
 
+        public static final String INDEX_SIGNIN = "signin.jsp";
+
         public static final String SIGNIN = "signin.jsp";
 
         public static final String ERROR = "404.jsp";
