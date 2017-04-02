@@ -24,6 +24,8 @@ public class ControllerConst {
 
         public static final String TERMS = "/terms";
 
+        public static final String HEALTHCHECK = "/healthcheck";
+
         public static final String CLEAN_ACCOUNTS = "/clean-accounts";
 
         public static final String OTHERS = "/**";
