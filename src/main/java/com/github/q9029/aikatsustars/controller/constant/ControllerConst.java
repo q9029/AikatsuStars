@@ -16,7 +16,15 @@ public class ControllerConst {
 
         public static final String SIGNIN = "/signin";
 
+        public static final String SIGNOUT = "/signout";
+
         public static final String CALLBACK = "/callback";
+
+        public static final String PRIVACYPOLICY = "/privacypolicy";
+
+        public static final String TERMS = "/terms";
+
+        public static final String CLEAN_ACCOUNTS = "/clean-accounts";
 
         public static final String OTHERS = "/**";
     }
@@ -31,7 +39,9 @@ public class ControllerConst {
 
         public static final String INDEX_SIGNIN = "signin.jsp";
 
-        public static final String SIGNIN = "signin.jsp";
+        public static final String PRIVACYPOLICY = "privacypolicy.jsp";
+
+        public static final String TERMS = "terms.jsp";
 
         public static final String ERROR = "404.jsp";
     }

@@ -1,0 +1,14 @@
+SELECT
+  id,
+  name,
+  screen_name,
+  access_token,
+  access_token_secret,
+  valid,
+  administrative,
+  regist_account_id,
+  regist_time,
+  update_account_id,
+  update_time
+FROM
+  accounts

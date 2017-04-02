@@ -7,6 +7,6 @@
         <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     </head>
     <body>
-        <a href="/signin">Sign in with Twitter.</a>
+        プライバシーポリシー.
     </body>
 </html>
