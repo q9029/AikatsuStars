@@ -6,11 +6,12 @@
         <title>AikatsuStars</title>
     </head>
     <body>
-        <a href="/signin">Sigin in with Twitter.</a>
         <%
         if (session.getAttribute(ControllerConst.Session.TWITTER) != null) {
-        Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
-        out.println("<p>Welcome " + twitter.getId() + "</p>");
+            Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
+            out.println("<p>Welcome " + twitter.getId() + "</p>");
+        } else {
+            out.println("<a href=\"/signin\">Sigin in with Twitter.</a>");
         }
         %>
     </body>

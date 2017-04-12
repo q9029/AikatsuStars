@@ -1,41 +1,18 @@
-package com.github.q9029.aikatsustars.dao.dto;
+package com.github.q9029.aikatsustars.dto;
 
 import java.sql.Timestamp;
 
 public class Account {
 
-    /** ID. */
     private long id;
-
-    /** NAME. */
     private String name;
-
-    /** SCREEN_NAME. */
     private String screenName;
-
-    /** ACCESS_TOKEN. */
     private String accessToken;
-
-    /** ACCESS_TOKEN_SECRET. */
     private String accessTokenSecret;
-
-    /** VALID. */
     private boolean valid;
-
-    /** ADMINISTRATIVE. */
     private boolean administrative;
-
-    /** REGIST_ACCOUNT_ID. */
-    private long registAccountId;
-
-    /** REGIST_TIME. */
-    private Timestamp registTime;
-
-    /** UPDATE_ACCOUNT_ID. */
-    private long updateAccountId;
-
-    /** UPDATE_TIME. */
-    private Timestamp updateTime;
+    private Timestamp createdAt;
+    private Timestamp modifiedAt;
 
     public long getId() {
         return id;
@@ -79,28 +56,16 @@ public class Account {
     public void setAdministrative(boolean administrative) {
         this.administrative = administrative;
     }
-    public long getRegistAccountId() {
-        return registAccountId;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
-    public void setRegistAccountId(long registAccountId) {
-        this.registAccountId = registAccountId;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
-    public Timestamp getRegistTime() {
-        return registTime;
+    public Timestamp getModifiedAt() {
+        return modifiedAt;
     }
-    public void setRegistTime(Timestamp registTime) {
-        this.registTime = registTime;
-    }
-    public long getUpdateAccountId() {
-        return updateAccountId;
-    }
-    public void setUpdateAccountId(long updateAccountId) {
-        this.updateAccountId = updateAccountId;
-    }
-    public Timestamp getUpdateTime() {
-        return updateTime;
-    }
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
+    public void setModifiedAt(Timestamp modifiedAt) {
+        this.modifiedAt = modifiedAt;
     }
 }

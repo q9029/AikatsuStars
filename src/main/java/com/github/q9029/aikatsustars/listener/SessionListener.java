@@ -20,6 +20,5 @@ public class SessionListener implements HttpSessionListener {
     @Override
     public void sessionDestroyed(HttpSessionEvent event) {
         LOG.debug("session destroyed");
-        throw new RuntimeException();
     }
 }

@@ -17,13 +17,10 @@ import org.apache.log4j.Logger;
 import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
 
 import twitter4j.Twitter;
-import twitter4j.TwitterException;
 
 public class OAuthCredentialsFilter implements Filter {
 
-    /**
-     * ロガー.
-     */
+    /** ロガー. */
     private static final Logger LOG = Logger.getLogger(OAuthCredentialsFilter.class);
 
     @Override
@@ -36,23 +33,18 @@ public class OAuthCredentialsFilter implements Filter {
             // HttpSessionの取得
             session = ((HttpServletRequest) request).getSession();
 
-            // OAuth有効性確認
+            // Twitterの取得
             Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
+            if (twitter == null) {
+                // indexへリダイレクト
+                ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.INDEX);
+            }
+
+            // OAuth有効性確認
             twitter.verifyCredentials();
 
             // 処理を継続
             chain.doFilter(request, response);
-
-        } catch (TwitterException e) {
-            LOG.error("Invalid OAuth access token.", e);
-
-            // セッションの破棄
-            if (session != null) {
-                session.invalidate();
-            }
-
-            // signinへリダイレクト
-            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.SIGNIN);
 
         } catch (Exception e) {
             LOG.error("Invalid session.", e);
@@ -62,8 +54,8 @@ public class OAuthCredentialsFilter implements Filter {
                 session.invalidate();
             }
 
-            // signinへリダイレクト
-            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.SIGNIN);
+            // indexへリダイレクト
+            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.INDEX);
         }
     }
 

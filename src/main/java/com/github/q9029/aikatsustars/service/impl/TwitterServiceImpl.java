@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.q9029.aikatsustars.dao.AccountsDao;
-import com.github.q9029.aikatsustars.dao.dto.Account;
+import com.github.q9029.aikatsustars.dto.Account;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
 import twitter4j.Twitter;
@@ -23,10 +23,10 @@ public class TwitterServiceImpl implements TwitterService {
     @Override
     public void cleanAccounts() {
 
-        List<Account> accountList = accountsDao.selectAll();
+        List<Account> accountList = accountsDao.findAll();
 
         if (accountList != null) {
-            for (Account account : accountsDao.selectAll()) {
+            for (Account account : accountList) {
 
                 // Twitterの新規インスタンスを取得する。
                 Twitter twitter = new TwitterFactory().getInstance();

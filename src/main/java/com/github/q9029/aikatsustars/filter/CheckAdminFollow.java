@@ -25,7 +25,6 @@ public class CheckAdminFollow implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         ADMIN_LIST = new ArrayList<Long>();
-        // q9029
         ADMIN_LIST.add(2434248589L);
     }
 

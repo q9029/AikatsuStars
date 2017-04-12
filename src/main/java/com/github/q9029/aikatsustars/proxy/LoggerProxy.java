@@ -9,7 +9,7 @@ public class LoggerProxy {
 
     private static final Logger LOG = Logger.getLogger(LoggerProxy.class);
 
-    public void beforeMethod(JoinPoint joinPoint) {
+    public void logBeforeMethod(JoinPoint joinPoint) {
         if (LOG.isTraceEnabled()) {
             String cName = joinPoint.getTarget().getClass().getSimpleName();
             String mName = joinPoint.getSignature().getName();
@@ -17,7 +17,7 @@ public class LoggerProxy {
         }
     }
 
-    public void afterMethod(JoinPoint joinPoint) {
+    public void logAfterMethod(JoinPoint joinPoint) {
         if (LOG.isTraceEnabled()) {
             String cName = joinPoint.getTarget().getClass().getSimpleName();
             String mName = joinPoint.getSignature().getName();
