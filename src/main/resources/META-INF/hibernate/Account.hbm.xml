@@ -42,7 +42,13 @@
         ]]>
     </query>
 
-    <query name="findValid">
+    <query neme="findById">
+        <![CDATA[
+            from Account a where a.id = :id
+        ]]>
+    </query>
+
+    <query name="findAllIsValid">
         <![CDATA[
             from Account a where a.valid = :valid
         ]]>
