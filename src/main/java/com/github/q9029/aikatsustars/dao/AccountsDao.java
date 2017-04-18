@@ -8,5 +8,5 @@ public interface AccountsDao {
 
     List<Account> findAll();
 
-    List<Account> findAllValid();
+    Account findById();
 }

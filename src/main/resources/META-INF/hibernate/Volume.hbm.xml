@@ -5,27 +5,15 @@
 
 <hibernate-mapping package="com.github.q9029.aikatsustars.dto">
 
-    <class name="Account" table="accounts">
+    <class name="Volume" table="volumes">
         <id name="id">
             <column name="id"/>
         </id>
         <property name="name">
             <column name="name"/>
         </property>
-        <property name="screenName">
-            <column name="screen_name"/>
-        </property>
-        <property name="accessToken">
-            <column name="access_token"/>
-        </property>
-        <property name="accessTokenSecret">
-            <column name="access_token_secret"/>
-        </property>
         <property name="valid">
             <column name="valid"/>
-        </property>
-        <property name="administrative">
-            <column name="administrative"/>
         </property>
         <property name="createdAt">
             <column name="created_at"/>
@@ -35,15 +23,15 @@
         </property>
     </class>
 
-    <query name="Account.findAll">
+    <query name="Volume.findAll">
         <![CDATA[
-            from Account
+            from Volume
         ]]>
     </query>
 
-    <query name="Account.findById">
+    <query name="Volume.findById">
         <![CDATA[
-            from Account a where a.id = :id
+            from Volume v where v.id = :id
         ]]>
     </query>
 

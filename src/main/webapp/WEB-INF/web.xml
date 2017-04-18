@@ -4,9 +4,6 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
     <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    <listener>
         <listener-class>com.github.q9029.aikatsustars.listener.LogManagerShutdownListener</listener-class>
     </listener>
     <listener>
@@ -18,7 +15,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/applicationContext.xml</param-value>
+            <param-value>classpath:/META-INF/spring/*.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -61,6 +58,7 @@
         <filter-name>encodingFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    <!--
     <filter-mapping>
         <filter-name>oauthCredentialsFilterChain</filter-name>
         <url-pattern>/</url-pattern>
@@ -69,6 +67,7 @@
         <filter-name>frendshipFilterChain</filter-name>
         <url-pattern>/</url-pattern>
     </filter-mapping>
+    -->
 
     <welcome-file-list>
         <!-- Call IndexController -->

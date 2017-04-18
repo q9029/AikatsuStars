@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
 
 @Controller
-@RequestMapping(value = ControllerConst.Uri.OTHERS)
+@RequestMapping(value = ControllerConst.Uri.ERROR)
 public class ErrorController {
 
     @RequestMapping(method = RequestMethod.GET)

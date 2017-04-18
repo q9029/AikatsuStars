@@ -28,7 +28,7 @@ public class ControllerConst {
 
         public static final String CLEAN_ACCOUNTS = "/clean-accounts";
 
-        public static final String OTHERS = "/**";
+        public static final String ERROR = "/error";
     }
 
     /**

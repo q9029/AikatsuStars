@@ -8,35 +8,35 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dao.AccountsDao;
+import com.github.q9029.aikatsustars.dao.CardDao;
 import com.github.q9029.aikatsustars.dao.constant.NamedQuery;
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.Card;
 
 @Repository
-public class AccountsDaoImpl implements AccountsDao {
+public class CardDaoImpl implements CardDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Account> findAll() {
+    public List<Card> findAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Account> query = session.createNamedQuery(NamedQuery.Account.findAll, Account.class);
+        Query<Card> query = session.createNamedQuery(NamedQuery.Card.findAll, Card.class);
 
         // クエリ実行
         return query.list();
     }
 
     @Override
-    public Account findById() {
+    public Card findById() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Account> query = session.createNamedQuery(NamedQuery.Account.findById, Account.class);
+        Query<Card> query = session.createNamedQuery(NamedQuery.Card.findById, Card.class);
 
         // クエリ実行
         return query.uniqueResult();

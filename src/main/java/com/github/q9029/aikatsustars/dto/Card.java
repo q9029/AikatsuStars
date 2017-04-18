@@ -2,15 +2,14 @@ package com.github.q9029.aikatsustars.dto;
 
 import java.sql.Timestamp;
 
-public class Account {
+public class Card {
 
     private Long id;
+    private String no;
     private String name;
-    private String screenName;
-    private String accessToken;
-    private String accessTokenSecret;
+    private String url;
+    private Integer rareType;
     private Boolean valid;
-    private Boolean administrative;
     private Timestamp createdAt;
     private Timestamp modifiedAt;
 
@@ -20,41 +19,35 @@ public class Account {
     public void setId(Long id) {
         this.id = id;
     }
+    public String getNo() {
+        return no;
+    }
+    public void setNo(String no) {
+        this.no = no;
+    }
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
     }
-    public String getScreenName() {
-        return screenName;
+    public String getUrl() {
+        return url;
     }
-    public void setScreenName(String screenName) {
-        this.screenName = screenName;
+    public void setUrl(String url) {
+        this.url = url;
     }
-    public String getAccessToken() {
-        return accessToken;
+    public Integer getRareType() {
+        return rareType;
     }
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-    public String getAccessTokenSecret() {
-        return accessTokenSecret;
-    }
-    public void setAccessTokenSecret(String accessTokenSecret) {
-        this.accessTokenSecret = accessTokenSecret;
+    public void setRareType(Integer rareType) {
+        this.rareType = rareType;
     }
     public Boolean getValid() {
         return valid;
     }
     public void setValid(Boolean valid) {
         this.valid = valid;
-    }
-    public Boolean getAdministrative() {
-        return administrative;
-    }
-    public void setAdministrative(Boolean administrative) {
-        this.administrative = administrative;
     }
     public Timestamp getCreatedAt() {
         return createdAt;

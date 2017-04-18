@@ -5,27 +5,24 @@
 
 <hibernate-mapping package="com.github.q9029.aikatsustars.dto">
 
-    <class name="Account" table="accounts">
+    <class name="Card" table="cards">
         <id name="id">
             <column name="id"/>
         </id>
+        <property name="no">
+            <column name="no"/>
+        </property>
         <property name="name">
             <column name="name"/>
         </property>
-        <property name="screenName">
-            <column name="screen_name"/>
+        <property name="url">
+            <column name="url"/>
         </property>
-        <property name="accessToken">
-            <column name="access_token"/>
-        </property>
-        <property name="accessTokenSecret">
-            <column name="access_token_secret"/>
+        <property name="rareType">
+            <column name="rare_type"/>
         </property>
         <property name="valid">
             <column name="valid"/>
-        </property>
-        <property name="administrative">
-            <column name="administrative"/>
         </property>
         <property name="createdAt">
             <column name="created_at"/>
@@ -35,15 +32,15 @@
         </property>
     </class>
 
-    <query name="Account.findAll">
+    <query name="Card.findAll">
         <![CDATA[
-            from Account
+            from Card
         ]]>
     </query>
 
-    <query name="Account.findById">
+    <query name="Card.findById">
         <![CDATA[
-            from Account a where a.id = :id
+            from Card c where c.id = :id
         ]]>
     </query>
 
