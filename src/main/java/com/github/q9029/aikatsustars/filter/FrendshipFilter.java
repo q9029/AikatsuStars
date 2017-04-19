@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
+import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 
 import twitter4j.Friendship;
 import twitter4j.ResponseList;
@@ -36,7 +37,7 @@ public class FrendshipFilter implements Filter {
         try {
             HttpServletRequest req = (HttpServletRequest) request;
             session = req.getSession();
-            Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
+            Twitter twitter = (Twitter) session.getAttribute(SessionKey.TWITTER);
             ResponseList<Friendship> ids = twitter.lookupFriendships(2434248589L);
             LOG.info("FollowedBy:" + ids.get(0).isFollowedBy() + ";Following:" + ids.get(0).isFollowing());
 
@@ -52,7 +53,7 @@ public class FrendshipFilter implements Filter {
             }
 
             // signinへリダイレクト
-            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.SIGNIN);
+            ((HttpServletResponse) response).sendRedirect(RequestURI.SIGNIN);
         }
     }
 

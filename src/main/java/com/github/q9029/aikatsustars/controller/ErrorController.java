@@ -6,15 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
+import com.github.q9029.aikatsustars.controller.constant.View;
 
 @Controller
-@RequestMapping(value = ControllerConst.Uri.ERROR)
+@RequestMapping(value = RequestURI.ERROR)
 public class ErrorController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String doGet() {
-        return ControllerConst.View.ERROR;
+        return View.ERROR;
     }
 }

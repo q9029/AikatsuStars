@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.dao.impl;
+package com.github.q9029.aikatsustars.repository.impl;
 
 import java.util.List;
 
@@ -8,35 +8,35 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dao.VolumeCardDao;
-import com.github.q9029.aikatsustars.dao.constant.NamedQuery;
-import com.github.q9029.aikatsustars.dto.VolumeCard;
+import com.github.q9029.aikatsustars.dto.Card;
+import com.github.q9029.aikatsustars.repository.CardDao;
+import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
 @Repository
-public class VolumeCardDaoImpl implements VolumeCardDao {
+public class CardDaoImpl implements CardDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<VolumeCard> findAll() {
+    public List<Card> findAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<VolumeCard> query = session.createNamedQuery(NamedQuery.VolumeCard.findAll, VolumeCard.class);
+        Query<Card> query = session.createNamedQuery(NamedQuery.Card.findAll, Card.class);
 
         // クエリ実行
         return query.list();
     }
 
     @Override
-    public VolumeCard findById() {
+    public Card findById() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<VolumeCard> query = session.createNamedQuery(NamedQuery.VolumeCard.findById, VolumeCard.class);
+        Query<Card> query = session.createNamedQuery(NamedQuery.Card.findById, Card.class);
 
         // クエリ実行
         return query.uniqueResult();

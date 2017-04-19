@@ -10,7 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestKey;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
+import com.github.q9029.aikatsustars.controller.constant.SessionKey;
+import com.github.q9029.aikatsustars.controller.constant.View;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -18,21 +21,21 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
 @Controller
-@RequestMapping(value = ControllerConst.Uri.CALLBACK)
+@RequestMapping(value = RequestURI.CALLBACK)
 public class CallbackController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String doGet(HttpServletRequest request, HttpServletResponse response) throws TwitterException {
 
         // セッションからTwitterのインスタンスを取得する。
-        Twitter twitter = (Twitter) request.getSession().getAttribute(ControllerConst.Session.TWITTER);
+        Twitter twitter = (Twitter) request.getSession().getAttribute(SessionKey.TWITTER);
 
         // セッションからリクエストトークンを取得する。
         RequestToken requestToken = (RequestToken) request.getSession()
-                .getAttribute(ControllerConst.Session.TWITTER_REQUEST_TOKEN);
+                .getAttribute(SessionKey.TWITTER_REQUEST_TOKEN);
 
         // リクエストからOAuth認証結果を取得する。
-        String verifier = request.getParameter(ControllerConst.Request.OAUTH_VERIFIER);
+        String verifier = request.getParameter(RequestKey.OAUTH_VERIFIER);
 
         // リクエストトークンとOAuth認証結果からアクセストークンを取得する。
         AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
@@ -42,7 +45,7 @@ public class CallbackController {
         accessToken.getTokenSecret();
 
         // セッションからリクエストトークンを削除する。
-        request.getSession().removeAttribute(ControllerConst.Session.TWITTER_REQUEST_TOKEN);
+        request.getSession().removeAttribute(SessionKey.TWITTER_REQUEST_TOKEN);
 
         return "redirect:/";
     }
@@ -50,6 +53,6 @@ public class CallbackController {
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleException() {
-        return ControllerConst.View.ERROR;
+        return View.ERROR;
     }
 }

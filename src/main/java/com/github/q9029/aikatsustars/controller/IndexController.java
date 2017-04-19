@@ -7,12 +7,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
+import com.github.q9029.aikatsustars.controller.constant.SessionKey;
+import com.github.q9029.aikatsustars.controller.constant.View;
 
 import twitter4j.Twitter;
 
 @Controller
-@RequestMapping(value = ControllerConst.Uri.INDEX)
+@RequestMapping(value = RequestURI.INDEX)
 public class IndexController {
 
     private static final Logger LOG = Logger.getLogger(IndexController.class);
@@ -22,9 +24,9 @@ public class IndexController {
 
         try {
             // OAuth有効性確認
-            Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
+            Twitter twitter = (Twitter) session.getAttribute(SessionKey.TWITTER);
             twitter.verifyCredentials();
-            return ControllerConst.View.INDEX;
+            return View.INDEX;
 
         } catch (Exception e) {
             LOG.error("Invalid session.", e);
@@ -34,7 +36,7 @@ public class IndexController {
                 session.invalidate();
             }
 
-            return ControllerConst.View.INDEX_SIGNIN;
+            return View.INDEX_SIGNIN;
         }
     }
 }

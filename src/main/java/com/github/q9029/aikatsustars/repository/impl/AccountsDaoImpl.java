@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.dao.impl;
+package com.github.q9029.aikatsustars.repository.impl;
 
 import java.util.List;
 
@@ -8,35 +8,35 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dao.VolumeDao;
-import com.github.q9029.aikatsustars.dao.constant.NamedQuery;
-import com.github.q9029.aikatsustars.dto.Volume;
+import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.repository.AccountsDao;
+import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
 @Repository
-public class VolumeDaoImpl implements VolumeDao {
+public class AccountsDaoImpl implements AccountsDao {
 
     @Autowired
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Volume> findAll() {
+    public List<Account> findAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Volume> query = session.createNamedQuery(NamedQuery.Volume.findAll, Volume.class);
+        Query<Account> query = session.createNamedQuery(NamedQuery.Account.findAll, Account.class);
 
         // クエリ実行
         return query.list();
     }
 
     @Override
-    public Volume findById() {
+    public Account findById() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Volume> query = session.createNamedQuery(NamedQuery.Volume.findById, Volume.class);
+        Query<Account> query = session.createNamedQuery(NamedQuery.Account.findById, Account.class);
 
         // クエリ実行
         return query.uniqueResult();

@@ -7,10 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 
 @Controller
-@RequestMapping(value = ControllerConst.Uri.SIGNOUT)
+@RequestMapping(value = RequestURI.SIGNOUT)
 public class SignoutController {
 
     @RequestMapping(method = RequestMethod.GET)

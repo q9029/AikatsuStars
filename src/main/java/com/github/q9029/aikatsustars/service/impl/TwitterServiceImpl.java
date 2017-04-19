@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.q9029.aikatsustars.dao.AccountsDao;
 import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.repository.AccountsDao;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
 import twitter4j.Twitter;
@@ -23,23 +23,33 @@ public class TwitterServiceImpl implements TwitterService {
     @Override
     public void cleanAccounts() {
 
+        // アカウント全件取得
         List<Account> accountList = accountsDao.findAll();
 
-        if (accountList != null) {
-            for (Account account : accountList) {
+        // 取得したアカウント件数ループ
+        for (Account account : accountList) {
 
-                // Twitterの新規インスタンスを取得する。
-                Twitter twitter = new TwitterFactory().getInstance();
+            // Twitterインスタンスを取得
+            Twitter twitter = new TwitterFactory().getInstance();
 
-                AccessToken accessToken = new AccessToken(account.getAccessToken(), account.getAccessTokenSecret());
-                twitter.setOAuthAccessToken(accessToken);
+            // アクセストークンを設定
+            AccessToken accessToken = new AccessToken(account.getAccessToken(), account.getAccessTokenSecret());
+            twitter.setOAuthAccessToken(accessToken);
 
-                try {
-                    twitter.verifyCredentials();
-                } catch (TwitterException e) {
-                    // 無効フラグを立てる
-                }
+            // 有効フラグを初期化
+            boolean isValid = true;
+
+            try {
+                // アクセストークンの有効性チェック
+                twitter.verifyCredentials();
+
+            } catch (TwitterException e) {
+                // 有効フラグに無効を設定
+                isValid = false;
             }
+
+            // 有効フラグを設定
+            account.setValid(isValid);
         }
     }
 }

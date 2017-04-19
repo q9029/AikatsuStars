@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.dao.constant;
+package com.github.q9029.aikatsustars.repository.constant;
 
 public class NamedQuery {
 

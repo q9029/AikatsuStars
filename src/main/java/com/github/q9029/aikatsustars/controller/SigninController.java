@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
+import com.github.q9029.aikatsustars.controller.constant.SessionKey;
+import com.github.q9029.aikatsustars.controller.constant.View;
 
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
@@ -19,7 +21,7 @@ import twitter4j.TwitterFactory;
 import twitter4j.auth.RequestToken;
 
 @Controller
-@RequestMapping(value = ControllerConst.Uri.SIGNIN)
+@RequestMapping(value = RequestURI.SIGNIN)
 public class SigninController {
 
     /**
@@ -34,13 +36,13 @@ public class SigninController {
         Twitter twitter = new TwitterFactory().getInstance();
 
         // セッションにTwitterのインスタンスを登録する。
-        request.getSession().setAttribute(ControllerConst.Session.TWITTER, twitter);
+        request.getSession().setAttribute(SessionKey.TWITTER, twitter);
 
         // TwitterAPIからリクエストトークンを取得する。
         RequestToken requestToken = twitter.getOAuthRequestToken();
 
         // セッションにリクエストトークンを登録する。
-        request.getSession().setAttribute(ControllerConst.Session.TWITTER_REQUEST_TOKEN, requestToken);
+        request.getSession().setAttribute(SessionKey.TWITTER_REQUEST_TOKEN, requestToken);
 
         // TwitterAPIのログインページにリダイレクトする。
         return "redirect:" + requestToken.getAuthenticationURL();
@@ -50,6 +52,6 @@ public class SigninController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleException(Exception e) {
         LOG.error("System error.", e);
-        return ControllerConst.View.ERROR;
+        return View.ERROR;
     }
 }

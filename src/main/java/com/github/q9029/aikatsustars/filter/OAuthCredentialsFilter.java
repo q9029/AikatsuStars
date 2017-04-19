@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
+import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 
 import twitter4j.Twitter;
 
@@ -34,10 +35,10 @@ public class OAuthCredentialsFilter implements Filter {
             session = ((HttpServletRequest) request).getSession();
 
             // Twitterの取得
-            Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
+            Twitter twitter = (Twitter) session.getAttribute(SessionKey.TWITTER);
             if (twitter == null) {
                 // indexへリダイレクト
-                ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.INDEX);
+                ((HttpServletResponse) response).sendRedirect(RequestURI.INDEX);
             }
 
             // OAuth有効性確認
@@ -55,7 +56,7 @@ public class OAuthCredentialsFilter implements Filter {
             }
 
             // indexへリダイレクト
-            ((HttpServletResponse) response).sendRedirect(ControllerConst.Uri.INDEX);
+            ((HttpServletResponse) response).sendRedirect(RequestURI.INDEX);
         }
     }
 

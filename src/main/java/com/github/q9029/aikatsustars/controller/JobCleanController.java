@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
 @RestController
-@RequestMapping(value = ControllerConst.Uri.CLEAN_ACCOUNTS)
-public class CleanAccountsController {
+@RequestMapping(value = RequestURI.JOB_CLEAN)
+public class JobCleanController {
 
-    private static final Logger LOG = Logger.getLogger(CleanAccountsController.class);
+    private static final Logger LOG = Logger.getLogger(JobCleanController.class);
 
     @Autowired
     private TwitterService twitterService;

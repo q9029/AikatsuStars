@@ -79,21 +79,20 @@
             <beans:props>
                 <beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</beans:prop>
                 <beans:prop key="hibernate.show_sql">true</beans:prop>
-                <beans:prop key="hibernate.format_sql">true</beans:prop>
             </beans:props>
         </beans:property>
     </beans:bean>
 
     <!-- ProxyLogging -->
     <aop:config>
-        <aop:aspect ref="loggerProxy">
+        <aop:aspect ref="loggingProxy">
             <aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.aikatsustars.controller.*.*(..))"/>
             <aop:before pointcut-ref="pointcutController" method="logBeforeMethod"/>
             <aop:after pointcut-ref="pointcutController" method="logAfterMethod"/>
             <aop:pointcut id="pointcutService" expression="execution(* com.github.q9029.aikatsustars.service.*.*(..))"/>
             <aop:before pointcut-ref="pointcutService" method="logBeforeMethod"/>
             <aop:after pointcut-ref="pointcutService" method="logAfterMethod"/>
-            <aop:pointcut id="pointcutDao" expression="execution(* com.github.q9029.aikatsustars.dao.*.*(..))"/>
+            <aop:pointcut id="pointcutDao" expression="execution(* com.github.q9029.aikatsustars.repository.*.*(..))"/>
             <aop:before pointcut-ref="pointcutDao" method="logBeforeMethod"/>
             <aop:after pointcut-ref="pointcutDao" method="logAfterMethod"/>
         </aop:aspect>

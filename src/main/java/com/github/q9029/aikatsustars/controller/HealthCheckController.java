@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.q9029.aikatsustars.controller.constant.ControllerConst;
+import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 
 @RestController
-@RequestMapping(value = ControllerConst.Uri.HEALTHCHECK)
+@RequestMapping(value = RequestURI.HEALTHCHECK)
 public class HealthCheckController {
 
     private static final Logger LOG = Logger.getLogger(HealthCheckController.class);

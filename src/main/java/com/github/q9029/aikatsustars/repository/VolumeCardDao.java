@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.dao;
+package com.github.q9029.aikatsustars.repository;
 
 import java.util.List;
 
