@@ -1,0 +1,16 @@
+html {
+    overflow-y: scroll;
+}
+body {
+    padding-top: 60px;
+}
+.header {
+    width: 900px;
+    margin: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.contents {
+    width: 900px;
+    margin: auto;
+}

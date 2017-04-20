@@ -1,18 +1,23 @@
-<%@ page import="twitter4j.Twitter,com.github.q9029.aikatsustars.controller.constant.ControllerConst" %>
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-        <meta charset="UTF-8" />
-        <title>AikatsuStars</title>
-    </head>
-    <body>
-        <%
-        if (session.getAttribute(ControllerConst.Session.TWITTER) != null) {
-            Twitter twitter = (Twitter) session.getAttribute(ControllerConst.Session.TWITTER);
-            out.println("<p>Welcome " + twitter.getId() + "</p>");
-        } else {
-            out.println("<a href=\"/signin\">Sigin in with Twitter.</a>");
-        }
-        %>
-    </body>
-</html>
+<%@page pageEncoding="UTF-8" contentType="text/html" isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<c:import url="/WEB-INF/views/layout/layout.jsp">
+    <c:param name="content">
+        <h1>Index</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>登録日時</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.registered}</td>
+                </tr>
+            </tbody>
+        </table>
+    </c:param>
+</c:import>

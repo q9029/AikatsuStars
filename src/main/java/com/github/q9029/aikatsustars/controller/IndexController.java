@@ -36,7 +36,7 @@ public class IndexController {
                 session.invalidate();
             }
 
-            return View.INDEX_SIGNIN;
+            return View.INDEX;
         }
     }
 }
