@@ -1,5 +1,6 @@
 package com.github.q9029.aikatsustars.repository.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,26 +20,41 @@ public class VolumeCardDaoImpl implements VolumeCardDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<VolumeCard> findAll() {
+    public VolumeCard load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<VolumeCard> query = session.createNamedQuery(NamedQuery.VolumeCard.findAll, VolumeCard.class);
-
         // クエリ実行
-        return query.list();
+        return session.load(VolumeCard.class, id);
     }
 
     @Override
-    public VolumeCard findById() {
+    public Serializable save(VolumeCard volumeCard) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        return session.save(volumeCard);
+    }
+
+    @Override
+    public void delete(VolumeCard volumeCard) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        session.delete(volumeCard);
+    }
+
+    @Override
+    public List<VolumeCard> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<VolumeCard> query = session.createNamedQuery(NamedQuery.VolumeCard.findById, VolumeCard.class);
+        Query<VolumeCard> query = session.createNamedQuery(NamedQuery.VolumeCard.loadAll, VolumeCard.class);
 
         // クエリ実行
-        return query.uniqueResult();
+        return query.list();
     }
 }

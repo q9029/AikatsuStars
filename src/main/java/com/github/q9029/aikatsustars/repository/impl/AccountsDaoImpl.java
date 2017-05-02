@@ -1,5 +1,6 @@
 package com.github.q9029.aikatsustars.repository.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,26 +20,41 @@ public class AccountsDaoImpl implements AccountsDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Account> findAll() {
+    public Account load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<Account> query = session.createNamedQuery(NamedQuery.Account.findAll, Account.class);
-
         // クエリ実行
-        return query.list();
+        return session.load(Account.class, id);
     }
 
     @Override
-    public Account findById() {
+    public Serializable save(Account account) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        return session.save(account);
+    }
+
+    @Override
+    public void delete(Account account) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        session.delete(account);
+    }
+
+    @Override
+    public List<Account> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Account> query = session.createNamedQuery(NamedQuery.Account.findById, Account.class);
+        Query<Account> query = session.createNamedQuery(NamedQuery.Account.loadAll, Account.class);
 
         // クエリ実行
-        return query.uniqueResult();
+        return query.list();
     }
 }

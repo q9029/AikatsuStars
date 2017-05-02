@@ -1,5 +1,6 @@
 package com.github.q9029.aikatsustars.repository.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,26 +20,41 @@ public class VolumeDaoImpl implements VolumeDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Volume> findAll() {
+    public Volume load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<Volume> query = session.createNamedQuery(NamedQuery.Volume.findAll, Volume.class);
-
         // クエリ実行
-        return query.list();
+        return session.load(Volume.class, id);
     }
 
     @Override
-    public Volume findById() {
+    public Serializable save(Volume volume) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        return session.save(volume);
+    }
+
+    @Override
+    public void delete(Volume volume) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        session.delete(volume);
+    }
+
+    @Override
+    public List<Volume> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Volume> query = session.createNamedQuery(NamedQuery.Volume.findById, Volume.class);
+        Query<Volume> query = session.createNamedQuery(NamedQuery.Volume.loadAll, Volume.class);
 
         // クエリ実行
-        return query.uniqueResult();
+        return query.list();
     }
 }

@@ -1,16 +1,37 @@
 html {
     overflow-y: scroll;
+    overflow: -moz-scrollbars-vertical;
 }
 body {
-    padding-top: 60px;
+    margin: 0;
+    min-width: 300px;
 }
-.header {
-    width: 900px;
-    margin: auto;
-    padding-right: 15px;
-    padding-left: 15px;
+.navbar {
+    border-radius: 0px;
+    margin-bottom: 5px;
 }
-.contents {
-    width: 900px;
-    margin: auto;
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.ellipsis {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+.btn-twitter {
+    padding: 0px 0px;
+    border: none;
+}
+.img-twitter:hover {
+    opacity: 0.60;
+    -moz-opacity: 0.60;
+    filter: alpha(opacity=60);
+}
+hr {
+    margin-top: 0px;
+    margin-bottom: 10px;
 }

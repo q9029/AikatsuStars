@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,10 +15,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 import com.github.q9029.aikatsustars.controller.constant.View;
+import com.github.q9029.aikatsustars.service.TwitterService;
 
-import twitter4j.Twitter;
 import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
 import twitter4j.auth.RequestToken;
 
 @Controller
@@ -29,20 +29,17 @@ public class SigninController {
      */
     private static final Logger LOG = Logger.getLogger(SigninController.class);
 
+    @Autowired
+    private TwitterService twitterService;
+
     @RequestMapping(method = RequestMethod.GET)
     public String doGet(HttpServletRequest request, HttpSession session) throws TwitterException {
 
-        // Twitterの新規インスタンスを取得する。
-        Twitter twitter = new TwitterFactory().getInstance();
-
-        // セッションにTwitterのインスタンスを登録する。
-        request.getSession().setAttribute(SessionKey.TWITTER, twitter);
-
         // TwitterAPIからリクエストトークンを取得する。
-        RequestToken requestToken = twitter.getOAuthRequestToken();
+        RequestToken requestToken = twitterService.getRequestToken();
 
         // セッションにリクエストトークンを登録する。
-        request.getSession().setAttribute(SessionKey.TWITTER_REQUEST_TOKEN, requestToken);
+        session.setAttribute(SessionKey.TWITTER_REQUEST_TOKEN, requestToken);
 
         // TwitterAPIのログインページにリダイレクトする。
         return "redirect:" + requestToken.getAuthenticationURL();

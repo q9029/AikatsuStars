@@ -1,5 +1,6 @@
 package com.github.q9029.aikatsustars.repository.impl;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -19,26 +20,41 @@ public class CardDaoImpl implements CardDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public List<Card> findAll() {
+    public Card load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<Card> query = session.createNamedQuery(NamedQuery.Card.findAll, Card.class);
-
         // クエリ実行
-        return query.list();
+        return session.load(Card.class, id);
     }
 
     @Override
-    public Card findById() {
+    public Serializable save(Card card) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        return session.save(card);
+    }
+
+    @Override
+    public void delete(Card card) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        session.delete(card);
+    }
+
+    @Override
+    public List<Card> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Card> query = session.createNamedQuery(NamedQuery.Card.findById, Card.class);
+        Query<Card> query = session.createNamedQuery(NamedQuery.Card.loadAll, Card.class);
 
         // クエリ実行
-        return query.uniqueResult();
+        return query.list();
     }
 }
