@@ -12,7 +12,7 @@
                 </button>
                 <a class="navbar-brand" href="<c:url value='/'/>">スタトレ</a>
             </div>
-            <div id="navbar" class="collapse navbar-collapse pull-right">
+            <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <c:if var='isAnonymous' test='${empty sessionScope.account}'>
                         <li><a class="navbar-link" href="<c:url value='/signin'/>">ログイン</a></li>
