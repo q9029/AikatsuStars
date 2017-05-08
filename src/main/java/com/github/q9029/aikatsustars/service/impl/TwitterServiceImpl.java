@@ -37,12 +37,12 @@ public class TwitterServiceImpl implements TwitterService {
     }
 
     @Override
-    public Account registAccount(RequestToken requestToken, String verifier) throws TwitterException {
+    public Account registAccount(AccessToken accessToken) throws TwitterException {
         // Twitterインスタンスを取得
         Twitter twitter = new TwitterFactory().getInstance();
 
         // 登録情報の取得
-        AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+        twitter.setOAuthAccessToken(accessToken);
         User user = twitter.verifyCredentials();
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 

@@ -31,5 +31,5 @@ public interface TwitterService {
      */
     AccessToken getAccessToken(RequestToken requestToken, String verifier) throws TwitterException;
 
-    Account registAccount(RequestToken requestToken, String verifier) throws TwitterException;
+    Account registAccount(AccessToken accessToken) throws TwitterException;
 }

@@ -56,7 +56,7 @@ public class CallbackController {
 
             if (account == null) {
                 // リクエストトークンとOAuth認証結果からアクセストークンを取得する。
-                account = twitterService.registAccount(requestToken, verifier);
+                account = twitterService.registAccount(accessToken);
             } else {
                 try {
                     // アカウントの有効性チェック
