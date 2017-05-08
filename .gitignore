@@ -1,5 +1,10 @@
-.settings
-target
-.classpath
-.project
+# .gitkeep file
 !.gitkeep
+
+# compile directory
+/target/
+
+# eclipse settings
+/.settings/
+/.classpath
+/.project
