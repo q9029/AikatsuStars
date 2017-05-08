@@ -15,9 +15,12 @@ import com.github.q9029.aikatsustars.controller.constant.RequestKey;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 import com.github.q9029.aikatsustars.controller.constant.View;
+import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.service.AccountsService;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
 import twitter4j.TwitterException;
+import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
 @Controller
@@ -27,25 +30,43 @@ public class CallbackController {
     @Autowired
     private TwitterService twitterService;
 
+    @Autowired
+    private AccountsService accountsService;
+
     @RequestMapping(method = RequestMethod.GET)
-    public String doGet(HttpServletRequest request, HttpSession session) {
+    public String doGet(HttpServletRequest request, HttpSession session) throws TwitterException {
 
         try {
-            // セッションからリクエストトークンを取得する。
-            RequestToken requestToken = (RequestToken) session.getAttribute(SessionKey.TWITTER_REQUEST_TOKEN);
+            // セッションからリクエストトークンを取得
+            RequestToken requestToken = (RequestToken) session.getAttribute(SessionKey.REQUEST_TOKEN);
 
-            // リクエストからOAuth認証結果を取得する。
+            // リクエストからOAuth認証結果を取得
             String verifier = request.getParameter(RequestKey.OAUTH_VERIFIER);
 
-            // リクエストトークンとOAuth認証結果からアクセストークンを取得する。
-            twitterService.registAccount(requestToken, verifier);
+            // アクセストークンを取得
+            AccessToken accessToken = twitterService.getAccessToken(requestToken, verifier);
 
-        } catch (TwitterException e) {
-            throw new RuntimeException(e);
+            Account account = accountsService.load(accessToken.getUserId());
+
+            if (account == null) {
+                // リクエストトークンとOAuth認証結果からアクセストークンを取得する。
+                account = twitterService.registAccount(requestToken, verifier);
+            } else {
+                try {
+                    // アカウントの有効性チェック
+                    twitterService.verify(account);
+                } catch (TwitterException e) {
+                    account.setAccessToken(accessToken.getToken());
+                    account.setAccessTokenSecret(accessToken.getTokenSecret());
+                    accountsService.update(account);
+                }
+            }
+
+            session.setAttribute(SessionKey.ACCOUNT, account);
 
         } finally {
             // セッションからリクエストトークンを削除する。
-            session.removeAttribute(SessionKey.TWITTER_REQUEST_TOKEN);
+            session.removeAttribute(SessionKey.REQUEST_TOKEN);
         }
         return "redirect:/";
     }

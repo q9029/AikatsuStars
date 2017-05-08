@@ -7,6 +7,6 @@ public class SessionKey {
 
     private SessionKey() {}
 
-    public static final String TWITTER = "twitter";
-    public static final String TWITTER_REQUEST_TOKEN = "request_token";
+    public static final String ACCOUNT = "account";
+    public static final String REQUEST_TOKEN = "request_token";
 }

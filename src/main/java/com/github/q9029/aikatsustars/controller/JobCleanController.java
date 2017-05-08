@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
-import com.github.q9029.aikatsustars.service.TwitterService;
+import com.github.q9029.aikatsustars.service.AccountsService;
 
 @RestController
 @RequestMapping(value = RequestURI.JOB_CLEAN)
@@ -20,12 +20,12 @@ public class JobCleanController {
     private static final Logger LOG = Logger.getLogger(JobCleanController.class);
 
     @Autowired
-    private TwitterService twitterService;
+    private AccountsService accountsService;
 
     @RequestMapping(method = RequestMethod.HEAD)
     public ResponseEntity<String> doHead() {
         // logic execute.
-        twitterService.cleanAccounts();
+        accountsService.verifyAll();
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Connection", "close");

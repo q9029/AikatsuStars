@@ -39,7 +39,7 @@ public class SigninController {
         RequestToken requestToken = twitterService.getRequestToken();
 
         // セッションにリクエストトークンを登録する。
-        session.setAttribute(SessionKey.TWITTER_REQUEST_TOKEN, requestToken);
+        session.setAttribute(SessionKey.REQUEST_TOKEN, requestToken);
 
         // TwitterAPIのログインページにリダイレクトする。
         return "redirect:" + requestToken.getAuthenticationURL();

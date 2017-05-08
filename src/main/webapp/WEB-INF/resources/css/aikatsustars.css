@@ -1,3 +1,4 @@
+/* 基本設定 */
 html {
     overflow-y: scroll;
     overflow: -moz-scrollbars-vertical;
@@ -6,14 +7,30 @@ body {
     margin: 0;
     min-width: 300px;
 }
-.navbar {
-    border-radius: 0px;
-    margin-bottom: 5px;
+.contents {
+    padding-top: 10px;
+}
+a {
+    cursor:pointer;
 }
 .container-fluid {
     padding-right: 0px;
     padding-left: 0px;
 }
+
+/* ナビゲーションバー */
+.navbar {
+    border-radius: 0px;
+    margin-bottom: 5px;
+}
+
+/* フッター */
+hr {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* 更新情報 */
 .ellipsis {
     width: 100%;
     white-space: nowrap;
@@ -21,17 +38,4 @@ body {
     text-overflow: ellipsis;
     -webkit-text-overflow: ellipsis;
     -o-text-overflow: ellipsis;
-}
-.btn-twitter {
-    padding: 0px 0px;
-    border: none;
-}
-.img-twitter:hover {
-    opacity: 0.60;
-    -moz-opacity: 0.60;
-    filter: alpha(opacity=60);
-}
-hr {
-    margin-top: 0px;
-    margin-bottom: 10px;
 }

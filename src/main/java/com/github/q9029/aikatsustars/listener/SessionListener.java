@@ -5,6 +5,10 @@ import javax.servlet.http.HttpSessionListener;
 
 import org.apache.log4j.Logger;
 
+/**
+ * セッションリスナー.
+ * @author q9029
+ */
 public class SessionListener implements HttpSessionListener {
 
     /**
@@ -14,11 +18,15 @@ public class SessionListener implements HttpSessionListener {
 
     @Override
     public void sessionCreated(HttpSessionEvent event) {
-        LOG.debug("session created");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("セッションが生成されました。");
+        }
     }
 
     @Override
     public void sessionDestroyed(HttpSessionEvent event) {
-        LOG.debug("session destroyed");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("セッションが破棄されました。");
+        }
     }
 }

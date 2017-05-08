@@ -35,7 +35,7 @@ public class OAuthCredentialsFilter implements Filter {
             session = ((HttpServletRequest) request).getSession();
 
             // Twitterの取得
-            Twitter twitter = (Twitter) session.getAttribute(SessionKey.TWITTER);
+            Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
             if (twitter == null) {
                 // indexへリダイレクト
                 ((HttpServletResponse) response).sendRedirect(RequestURI.INDEX);

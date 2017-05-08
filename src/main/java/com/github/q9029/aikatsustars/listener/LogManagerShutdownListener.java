@@ -6,6 +6,10 @@ import javax.servlet.ServletContextListener;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+/**
+ * シャットダウンリスナー.
+ * @author q9029
+ */
 public class LogManagerShutdownListener implements ServletContextListener {
 
     /**
@@ -15,8 +19,11 @@ public class LogManagerShutdownListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent event) {
-        // write buffered logs.
-        LOG.debug("shutdown LogManager");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("ログマネージャをシャットダウンします。");
+        }
+
+        // ログマネージャのシャットダウン
         LogManager.shutdown();
     }
 

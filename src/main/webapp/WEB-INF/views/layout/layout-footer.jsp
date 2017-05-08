@@ -3,6 +3,23 @@
 <footer class="footer container-fluid">
     <div class="container">
         <hr>
-        <p class="text-right text-muted">&copy; 2016 Queue</p>
+        <div class="row text-muted">
+            <div class="col-sm-3">
+                <div>&copy; 2016 Queue</div>
+            </div>
+            <div class="col-sm-9 right-block">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a href="#">当サイトについて</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#">約款・重要事項説明</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a href="#">個人情報について</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </footer>

@@ -3,13 +3,13 @@
 <c:import url="/WEB-INF/views/layout/layout.jsp">
     <c:param name="content">
         <div class="container">
-            <h1 class="h3">スタトレについて</h1>
-            <p>当サイトはアイカツスターズのカード交換を目的としております。また、当サイトではユーザ認証にTwitterアカウントを使用いたします。</p>
-            <p>
-                <a class="btn btn-default btn-twitter" href="/signin" role="button">
-                    <img class="img-twitter" alt="Sign in with Twitter" src="https://g.twimg.com/dev/sites/default/files/images_documentation/sign-in-with-twitter-gray.png"/>
-                </a>
-            </p>
+            <div class="panel panel-primary">
+                <div class="panel-heading">当サイトについて</div>
+                <div class="panel-body">
+                    アイカツスターズのカード交換を目的としております。
+                    また、今後の機能追加に向けてTwitterアカウントによる認証を利用しております。
+                </div>
+            </div>
         </div>
         <div class="container">
             <div class="panel panel-info">

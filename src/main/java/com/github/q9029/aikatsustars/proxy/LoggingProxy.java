@@ -5,7 +5,7 @@ import org.aspectj.lang.JoinPoint;
 import org.springframework.stereotype.Component;
 
 /**
- * ロギングプロキシクラス.
+ * 開始終了ロギングプロキシ.
  * @author q9029
  */
 @Component
@@ -17,26 +17,32 @@ public class LoggingProxy {
     private static final Logger LOG = Logger.getLogger(LoggingProxy.class);
 
     /**
-     * メソッドの開始ログを出力します.
+     * メソッドの開始をロギングします.
      * @param joinPoint
      */
-    public void logBeforeMethod(JoinPoint joinPoint) {
+    public void before(JoinPoint joinPoint) {
         if (LOG.isInfoEnabled()) {
-            String cName = joinPoint.getTarget().getClass().getSimpleName();
-            String mName = joinPoint.getSignature().getName();
-            LOG.info("Start " + cName + "." + mName + "()");
+            // クラス名、メソッド名の取得
+            String className = joinPoint.getTarget().getClass().getSimpleName();
+            String methodName = joinPoint.getSignature().getName();
+
+            // ログ出力
+            LOG.info(new StringBuilder().append("開始 クラス：").append(className).append(" メソッド：").append(methodName));
         }
     }
 
     /**
-     * メソッドの終了ログを出力します.
+     * メソッドの終了をロギングします.
      * @param joinPoint
      */
-    public void logAfterMethod(JoinPoint joinPoint) {
+    public void after(JoinPoint joinPoint) {
         if (LOG.isInfoEnabled()) {
-            String cName = joinPoint.getTarget().getClass().getSimpleName();
-            String mName = joinPoint.getSignature().getName();
-            LOG.info("End " + cName + "." + mName + "()");
+            // クラス名、メソッド名の取得
+            String className = joinPoint.getTarget().getClass().getSimpleName();
+            String methodName = joinPoint.getSignature().getName();
+
+            // ログ出力
+            LOG.info(new StringBuilder().append("終了 クラス：").append(className).append(" メソッド：").append(methodName));
         }
     }
 }

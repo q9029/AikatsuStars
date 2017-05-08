@@ -1,6 +1,6 @@
 package com.github.q9029.aikatsustars.service.impl;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +12,7 @@ import com.github.q9029.aikatsustars.service.TwitterService;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.User;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
@@ -23,63 +24,56 @@ public class TwitterServiceImpl implements TwitterService {
 
     @Override
     public RequestToken getRequestToken() throws TwitterException {
-        // Twitterの新規インスタンスを取得する。
+        // リクエストトークンを取得
         Twitter twitter = new TwitterFactory().getInstance();
-
-        // TwitterAPIからリクエストトークンを取得する。
         return twitter.getOAuthRequestToken();
     }
 
     @Override
-    public void registAccount(RequestToken requestToken, String verifier) throws TwitterException {
-        // Twitterインスタンスを取得
-        Twitter twitter = new TwitterFactory().getInstance();
-
+    public AccessToken getAccessToken(RequestToken requestToken, String verifier) throws TwitterException {
         // アクセストークンを取得
-        AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
-
-        // アカウントを新規作成
-        Account account = new Account();
-        account.setId(twitter.getId());
-//        account.setName(accessToken.getUserId());
-        account.setScreenName(accessToken.getScreenName());
-        account.setAccessToken(accessToken.getToken());
-        account.setAccessTokenSecret(accessToken.getTokenSecret());
-
-        // アカウントの永続化
-        accountsDao.save(account);
+        Twitter twitter = new TwitterFactory().getInstance();
+        return twitter.getOAuthAccessToken(requestToken, verifier);
     }
 
     @Override
-    public void cleanAccounts() {
+    public Account registAccount(RequestToken requestToken, String verifier) throws TwitterException {
+        // Twitterインスタンスを取得
+        Twitter twitter = new TwitterFactory().getInstance();
 
-        // アカウント全件取得
-        List<Account> accountList = accountsDao.loadAll();
+        // 登録情報の取得
+        AccessToken accessToken = twitter.getOAuthAccessToken(requestToken, verifier);
+        User user = twitter.verifyCredentials();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
-        // 取得したアカウント件数ループ
-        for (Account account : accountList) {
+        // アカウントを新規作成
+        Account account = new Account();
+        account.setId(user.getId());
+        account.setName(user.getName());
+        account.setScreenName(user.getScreenName());
+        account.setAccessToken(accessToken.getToken());
+        account.setAccessTokenSecret(accessToken.getTokenSecret());
+        account.setValid(true);
+        account.setAdministrative(false);
+        account.setCreatedAt(timestamp);
+        account.setModifiedAt(timestamp);
 
-            // Twitterインスタンスを取得
-            Twitter twitter = new TwitterFactory().getInstance();
+        // アカウントの永続化
+        accountsDao.save(account);
 
-            // アクセストークンを設定
-            AccessToken accessToken = new AccessToken(account.getAccessToken(), account.getAccessTokenSecret());
-            twitter.setOAuthAccessToken(accessToken);
+        return account;
+    }
 
-            // 有効フラグを初期化
-            boolean isValid = true;
+    @Override
+    public User verify(Account account) throws TwitterException {
+        // アクセストークンを生成
+        AccessToken accessToken = new AccessToken(account.getAccessToken(), account.getAccessTokenSecret());
 
-            try {
-                // アクセストークンの有効性チェック
-                twitter.verifyCredentials();
+        // アクセストークンを設定
+        Twitter twitter = new TwitterFactory().getInstance();
+        twitter.setOAuthAccessToken(accessToken);
 
-            } catch (TwitterException e) {
-                // 有効フラグに無効を設定
-                isValid = false;
-            }
-
-            // 有効フラグを設定
-            account.setValid(isValid);
-        }
+        // アクセストークンの有効性チェック
+        return twitter.verifyCredentials();
     }
 }

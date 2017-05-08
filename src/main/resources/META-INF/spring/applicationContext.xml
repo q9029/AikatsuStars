@@ -85,16 +85,20 @@
 
     <!-- ProxyLogging -->
     <aop:config>
+        <aop:aspect ref="procTimeProxy">
+            <aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.aikatsustars.controller.*.*(..))"/>
+            <aop:around pointcut-ref="pointcutController" method="around"/>
+        </aop:aspect>
         <aop:aspect ref="loggingProxy">
             <aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.aikatsustars.controller.*.*(..))"/>
-            <aop:before pointcut-ref="pointcutController" method="logBeforeMethod"/>
-            <aop:after pointcut-ref="pointcutController" method="logAfterMethod"/>
+            <aop:before pointcut-ref="pointcutController" method="before"/>
+            <aop:after pointcut-ref="pointcutController" method="after"/>
             <aop:pointcut id="pointcutService" expression="execution(* com.github.q9029.aikatsustars.service.*.*(..))"/>
-            <aop:before pointcut-ref="pointcutService" method="logBeforeMethod"/>
-            <aop:after pointcut-ref="pointcutService" method="logAfterMethod"/>
+            <aop:before pointcut-ref="pointcutService" method="before"/>
+            <aop:after pointcut-ref="pointcutService" method="after"/>
             <aop:pointcut id="pointcutDao" expression="execution(* com.github.q9029.aikatsustars.repository.*.*(..))"/>
-            <aop:before pointcut-ref="pointcutDao" method="logBeforeMethod"/>
-            <aop:after pointcut-ref="pointcutDao" method="logAfterMethod"/>
+            <aop:before pointcut-ref="pointcutDao" method="before"/>
+            <aop:after pointcut-ref="pointcutDao" method="after"/>
         </aop:aspect>
     </aop:config>
 </beans:beans>

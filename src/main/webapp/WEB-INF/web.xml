@@ -3,13 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 
-    <listener>
-        <listener-class>com.github.q9029.aikatsustars.listener.LogManagerShutdownListener</listener-class>
-    </listener>
-    <listener>
-        <listener-class>com.github.q9029.aikatsustars.listener.SessionListener</listener-class>
-    </listener>
-
+    <!-- サーブレットの定義 -->
     <servlet>
         <servlet-name>dispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -20,15 +14,13 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+    <!-- サーブレットのマッピング -->
     <servlet-mapping>
         <servlet-name>dispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <filter>
-        <filter-name>procTimeFilterChain</filter-name>
-        <filter-class>com.github.q9029.aikatsustars.filter.ProcTimeFilter</filter-class>
-    </filter>
+    <!-- フィルターの定義 -->
     <filter>
         <filter-name>encodingFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -50,10 +42,7 @@
         <filter-class>com.github.q9029.aikatsustars.filter.FrendshipFilter</filter-class>
     </filter>
 
-    <filter-mapping>
-        <filter-name>procTimeFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    <!-- フィルターのマッピング -->
     <filter-mapping>
         <filter-name>encodingFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
@@ -69,17 +58,26 @@
     </filter-mapping>
     -->
 
+    <!-- リスナーの定義 -->
+    <listener>
+        <listener-class>com.github.q9029.aikatsustars.listener.LogManagerShutdownListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.github.q9029.aikatsustars.listener.SessionListener</listener-class>
+    </listener>
+
+    <!-- セッションの設定 -->
+    <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config>
+
+    <!-- ウェルカムファイルの設定 -->
     <welcome-file-list>
-        <!-- Call IndexController -->
         <welcome-file>/</welcome-file>
     </welcome-file-list>
 
+    <!-- エラーページの設定 -->
     <error-page>
-        <!-- Call ErrorController -->
         <location>/error</location>
     </error-page>
-
-    <session-config>
-        <session-timeout>30</session-timeout>
-    </session-config>
 </web-app>

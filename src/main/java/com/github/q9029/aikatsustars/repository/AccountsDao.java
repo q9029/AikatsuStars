@@ -11,6 +11,8 @@ public interface AccountsDao {
 
     Serializable save(Account account);
 
+    void update(Account account);
+
     void delete(Account account);
 
     List<Account> loadAll();

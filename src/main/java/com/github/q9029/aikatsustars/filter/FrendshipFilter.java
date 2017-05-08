@@ -37,7 +37,7 @@ public class FrendshipFilter implements Filter {
         try {
             HttpServletRequest req = (HttpServletRequest) request;
             session = req.getSession();
-            Twitter twitter = (Twitter) session.getAttribute(SessionKey.TWITTER);
+            Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
             ResponseList<Friendship> ids = twitter.lookupFriendships(2434248589L);
             LOG.info("FollowedBy:" + ids.get(0).isFollowedBy() + ";Following:" + ids.get(0).isFollowing());
 

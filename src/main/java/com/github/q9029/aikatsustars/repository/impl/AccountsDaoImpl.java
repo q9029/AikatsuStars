@@ -25,7 +25,7 @@ public class AccountsDaoImpl implements AccountsDao {
         Session session = sessionFactory.getCurrentSession();
 
         // クエリ実行
-        return session.load(Account.class, id);
+        return session.get(Account.class, id);
     }
 
     @Override
@@ -35,6 +35,15 @@ public class AccountsDaoImpl implements AccountsDao {
 
         // クエリ実行
         return session.save(account);
+    }
+
+    @Override
+    public void update(Account account) {
+        // セッションの取得
+        Session session = sessionFactory.getCurrentSession();
+
+        // クエリ実行
+        session.update(account);
     }
 
     @Override
