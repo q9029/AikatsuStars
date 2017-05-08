@@ -3,6 +3,7 @@ package com.github.q9029.aikatsustars.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,11 @@ import twitter4j.auth.RequestToken;
 @Controller
 @RequestMapping(value = RequestURI.CALLBACK)
 public class CallbackController {
+
+    /**
+     * ロガー.
+     */
+    private static final Logger LOG = Logger.getLogger(CallbackController.class);
 
     @Autowired
     private TwitterService twitterService;
@@ -73,7 +79,8 @@ public class CallbackController {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public String handleException() {
+    public String handleException(Exception e) {
+        LOG.error("システムエラーが発生しました。", e);
         return View.ERROR;
     }
 }
