@@ -7,9 +7,6 @@ body {
     margin: 0;
     min-width: 300px;
 }
-.contents {
-    padding-top: 10px;
-}
 a {
     cursor:pointer;
 }
@@ -17,14 +14,35 @@ a {
     padding-right: 0px;
     padding-left: 0px;
 }
+.contents {
+    padding-top: 10px;
+}
+.contents > .container {
+    margin-bottom: 20px;
+}
+.panel {
+    margin-bottom: 0px;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 0px;
+}
+span[class~="blank"] {
+    margin-right: 0.5em;
+}
+img {
+    width: 100%;
+}
 
 /* ナビゲーションバー */
 .navbar {
     border-radius: 0px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 /* フッター */
+footer {
+    margin-bottom: 20px;
+}
 hr {
     margin-top: 0px;
     margin-bottom: 10px;
