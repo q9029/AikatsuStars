@@ -10,11 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.github.q9029.aikatsustars.dto.Card;
-import com.github.q9029.aikatsustars.repository.CardDao;
+import com.github.q9029.aikatsustars.repository.CardsDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
 @Repository
-public class CardDaoImpl implements CardDao {
+public class CardsDaoImpl implements CardsDao {
 
     @Autowired
     private SessionFactory sessionFactory;

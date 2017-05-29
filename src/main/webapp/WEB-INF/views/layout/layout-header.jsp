@@ -19,7 +19,8 @@
                     </c:if>
                     <c:if test='${!isAnonymous}'>
                         <li><a class="navbar-link">マイリスト</a></li>
-                        <li><a class="navbar-link">カード検索</a></li>
+                        <li><a class="navbar-link" href="<c:url value='/cardlist'/>">カードリスト</a></li>
+                        <li><a class="navbar-link" href="<c:url value='/search'/>">カード検索</a></li>
                         <li><a class="navbar-link" href="<c:url value='/signout'/>">ログアウト</a></li>
                     </c:if>
                     <li><a class="navbar-link" href="https://twitter.com/q9029">お問い合わせ</a></li>

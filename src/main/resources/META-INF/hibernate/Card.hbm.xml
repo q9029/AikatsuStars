@@ -32,7 +32,7 @@
         </property>
     </class>
 
-    <query name="Card.findAll">
+    <query name="Card.loadAll">
         <![CDATA[
             from Card
         ]]>
