@@ -15,7 +15,7 @@ import com.github.q9029.aikatsustars.service.AccountsService;
 
 @RestController
 @RequestMapping(value = RequestURI.JOB_CLEAN)
-public class JobCleanController {
+public class JobReloadController {
 
 	private static final Logger LOG = Logger.getLogger(JobCleanController.class);
 
