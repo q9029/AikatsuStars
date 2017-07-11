@@ -2,7 +2,7 @@ package com.github.q9029.aikatsustars.dto;
 
 import java.sql.Timestamp;
 
-public class SystemSetting {
+public class SystemSettingDto {
 
 	private Long id;
 	private String key;

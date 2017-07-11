@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.github.q9029.aikatsustars.dto.SystemSetting;
+import com.github.q9029.aikatsustars.dto.SystemSettingDto;
 
 public class SystemSettingsUtil {
 
@@ -20,12 +20,12 @@ public class SystemSettingsUtil {
 		return systemSettingsMap.get(key);
 	}
 
-	public static void reload(List<SystemSetting> systemSettingList) {
+	public static void reload(List<SystemSettingDto> systemSettingList) {
 		synchronized (systemSettingsMap) {
 			try {
 				LOG.info("システム設定のリロードを開始します。");
 				systemSettingsMap.clear();
-				for (SystemSetting systemSetting : systemSettingList) {
+				for (SystemSettingDto systemSetting : systemSettingList) {
 					systemSettingsMap.put(systemSetting.getKey(), systemSetting.getValue());
 				}
 				LOG.info("システム設定のリロードを終了しました。");
