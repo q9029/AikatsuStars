@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dto.SystemSetting;
+import com.github.q9029.aikatsustars.dto.SystemSettingDto;
 import com.github.q9029.aikatsustars.repository.SystemSettingsDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
@@ -19,27 +19,12 @@ public class SystemSettingsDaoImpl implements SystemSettingsDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public SystemSetting load(long id) {
-		// セッションの取得
-		Session session = sessionFactory.getCurrentSession();
-
-		// クエリ実行
-		return session.get(SystemSetting.class, id);
-	}
-
-	@Override
-	public SystemSetting load(String key) {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	@Override
-	public List<SystemSetting> loadAll() {
+	public List<SystemSettingDto> loadAll() {
 		// セッションの取得
 		Session session = sessionFactory.getCurrentSession();
 
 		// クエリの取得
-		Query<SystemSetting> query = session.createNamedQuery(NamedQuery.SystemSetting.loadAll, SystemSetting.class);
+		Query<SystemSettingDto> query = session.createNamedQuery(NamedQuery.SystemSettings.loadAll, SystemSettingDto.class);
 
 		// クエリ実行
 		return query.list();

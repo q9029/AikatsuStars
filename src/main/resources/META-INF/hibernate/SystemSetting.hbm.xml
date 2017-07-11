@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="com.github.q9029.aikatsustars.dto">
 
-	<class name="SystemSetting" table="system_settings">
+	<class name="SystemSettingDto" table="system_settings">
 		<id name="id">
 			<column name="id"/>
 		</id>
@@ -26,7 +26,7 @@
 		</property>
 	</class>
 
-	<query name="SystemSetting.loadAll">
+	<query name="SystemSettings.loadAllValid">
 		<![CDATA[
 			from SystemSetting
 		]]>

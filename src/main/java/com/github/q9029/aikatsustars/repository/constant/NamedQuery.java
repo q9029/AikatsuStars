@@ -20,7 +20,7 @@ public class NamedQuery {
 		public static final String loadAll = "VolumeCard.loadAll";
 	}
 
-	public class SystemSetting {
-		public static final String loadAll = "SystemSetting.loadAll";
+	public class SystemSettings {
+		public static final String loadAll = "SystemSettings.loadAll";
 	}
 }
