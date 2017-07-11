@@ -15,7 +15,7 @@ public class RequestURI {
 	public static final String SEARCH = "/search";
 	public static final String PRIVACYPOLICY = "/privacypolicy";
 	public static final String TERMS = "/terms";
-	public static final String HEALTHCHECK = "/healthcheck";
+	public static final String JOB_HEALTHCHECK = "/job/healthcheck";
 	public static final String JOB_CLEAN = "/job/clean";
 	public static final String JOB_RELOAD = "/job/reload";
 	public static final String ERROR = "/error";

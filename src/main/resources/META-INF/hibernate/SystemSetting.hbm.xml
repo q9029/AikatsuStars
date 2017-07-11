@@ -15,6 +15,9 @@
 		<property name="value">
 			<column name="value"/>
 		</property>
+		<property name="valid">
+			<column name="valid"/>
+		</property>
 		<property name="createdAt">
 			<column name="created_at"/>
 		</property>
@@ -26,12 +29,6 @@
 	<query name="SystemSetting.loadAll">
 		<![CDATA[
 			from SystemSetting
-		]]>
-	</query>
-
-	<query name="SystemSetting.findById">
-		<![CDATA[
-			from SystemSetting a where a.id = :id
 		]]>
 	</query>
 

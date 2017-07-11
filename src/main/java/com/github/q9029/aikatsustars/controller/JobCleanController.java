@@ -24,7 +24,7 @@ public class JobCleanController {
 
 	@RequestMapping(method = RequestMethod.HEAD)
 	public ResponseEntity<String> doHead() {
-		// logic execute.
+
 		accountsService.verifyAll();
 
 		HttpHeaders headers = new HttpHeaders();
@@ -35,7 +35,7 @@ public class JobCleanController {
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<String> handleException(Exception e) {
-		LOG.error("", e);
+		LOG.error(e.getMessage(), e);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Connection", "close");
 		headers.add("Content-Length", "0");

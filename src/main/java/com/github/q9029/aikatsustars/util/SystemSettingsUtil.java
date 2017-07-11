@@ -26,7 +26,11 @@ public class SystemSettingsUtil {
 				LOG.info("システム設定のリロードを開始します。");
 				systemSettingsMap.clear();
 				for (SystemSetting systemSetting : systemSettingList) {
-					systemSettingsMap.put(systemSetting.getKey(), systemSetting.getValue());
+					if (Boolean.TRUE.equals(systemSetting.getValid())) {
+						// TODO test
+						LOG.info("key=" + systemSetting.getKey() + " value=" + systemSetting.getValue());
+						systemSettingsMap.put(systemSetting.getKey(), systemSetting.getValue());
+					}
 				}
 				LOG.info("システム設定のリロードを終了しました。");
 			} catch (Exception e) {

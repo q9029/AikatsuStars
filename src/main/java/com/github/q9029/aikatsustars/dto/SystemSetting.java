@@ -7,6 +7,7 @@ public class SystemSetting {
 	private Long id;
 	private String key;
 	private String value;
+	private Boolean valid;
 	private Timestamp createdAt;
 	private Timestamp modifiedAt;
 
@@ -27,6 +28,12 @@ public class SystemSetting {
 	}
 	public void setValue(String value) {
 		this.value = value;
+	}
+	public Boolean getValid() {
+		return valid;
+	}
+	public void setValid(Boolean valid) {
+		this.valid = valid;
 	}
 	public Timestamp getCreatedAt() {
 		return createdAt;
