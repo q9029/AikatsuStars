@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 import com.github.q9029.aikatsustars.repository.AccountsDao;
 import com.github.q9029.aikatsustars.service.AccountsService;
 import com.github.q9029.aikatsustars.service.TwitterService;
@@ -22,22 +22,22 @@ public class AccountsServiceImpl implements AccountsService {
     private AccountsDao accountsDao;
 
     @Override
-    public Account load(long id) {
+    public AccountDto load(long id) {
         return accountsDao.load(id);
     }
 
     @Override
-    public void update(Account account) {
+    public void update(AccountDto account) {
         accountsDao.update(account);
     }
 
     @Override
     public void verifyAll() {
         // アカウント全件取得
-        List<Account> accountList = accountsDao.loadAll();
+        List<AccountDto> accountList = accountsDao.loadAll();
 
         // 取得したアカウント件数ループ
-        for (Account account : accountList) {
+        for (AccountDto account : accountList) {
 
             // アクセストークンの有効性チェック
             boolean isValid = true;

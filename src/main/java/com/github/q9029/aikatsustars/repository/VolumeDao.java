@@ -3,15 +3,15 @@ package com.github.q9029.aikatsustars.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import com.github.q9029.aikatsustars.dto.Volume;
+import com.github.q9029.aikatsustars.dto.VolumeDto;
 
 public interface VolumeDao {
 
-    Volume load(long id);
+    VolumeDto load(long id);
 
-    Serializable save(Volume account);
+    Serializable save(VolumeDto account);
 
-    void delete(Volume account);
+    void delete(VolumeDto account);
 
-    List<Volume> loadAll();
+    List<VolumeDto> loadAll();
 }

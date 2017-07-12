@@ -3,15 +3,15 @@ package com.github.q9029.aikatsustars.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import com.github.q9029.aikatsustars.dto.Card;
+import com.github.q9029.aikatsustars.dto.CardDto;
 
 public interface CardsDao {
 
-    Card load(long id);
+    CardDto load(long id);
 
-    Serializable save(Card account);
+    Serializable save(CardDto account);
 
-    void delete(Card account);
+    void delete(CardDto account);
 
-    List<Card> loadAll();
+    List<CardDto> loadAll();
 }

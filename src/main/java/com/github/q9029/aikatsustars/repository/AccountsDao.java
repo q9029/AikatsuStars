@@ -3,17 +3,17 @@ package com.github.q9029.aikatsustars.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 
 public interface AccountsDao {
 
-    Account load(long id);
+    AccountDto load(long id);
 
-    Serializable save(Account account);
+    Serializable save(AccountDto account);
 
-    void update(Account account);
+    void update(AccountDto account);
 
-    void delete(Account account);
+    void delete(AccountDto account);
 
-    List<Account> loadAll();
+    List<AccountDto> loadAll();
 }

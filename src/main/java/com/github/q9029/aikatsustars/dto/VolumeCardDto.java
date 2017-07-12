@@ -2,7 +2,7 @@ package com.github.q9029.aikatsustars.dto;
 
 import java.sql.Timestamp;
 
-public class VolumeCard {
+public class VolumeCardDto {
 
     private Long id;
     private Long volumeId;

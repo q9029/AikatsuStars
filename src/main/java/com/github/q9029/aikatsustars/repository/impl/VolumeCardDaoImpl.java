@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dto.VolumeCard;
+import com.github.q9029.aikatsustars.dto.VolumeCardDto;
 import com.github.q9029.aikatsustars.repository.VolumeCardDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
@@ -20,16 +20,16 @@ public class VolumeCardDaoImpl implements VolumeCardDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public VolumeCard load(long id) {
+    public VolumeCardDto load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリ実行
-        return session.load(VolumeCard.class, id);
+        return session.load(VolumeCardDto.class, id);
     }
 
     @Override
-    public Serializable save(VolumeCard volumeCard) {
+    public Serializable save(VolumeCardDto volumeCard) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -38,7 +38,7 @@ public class VolumeCardDaoImpl implements VolumeCardDao {
     }
 
     @Override
-    public void delete(VolumeCard volumeCard) {
+    public void delete(VolumeCardDto volumeCard) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -47,12 +47,12 @@ public class VolumeCardDaoImpl implements VolumeCardDao {
     }
 
     @Override
-    public List<VolumeCard> loadAll() {
+    public List<VolumeCardDto> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<VolumeCard> query = session.createNamedQuery(NamedQuery.VolumeCard.loadAll, VolumeCard.class);
+        Query<VolumeCardDto> query = session.createNamedQuery(NamedQuery.VolumeCard.loadAll, VolumeCardDto.class);
 
         // クエリ実行
         return query.list();

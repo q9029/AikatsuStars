@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 import com.github.q9029.aikatsustars.controller.constant.View;
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
 import twitter4j.TwitterException;
@@ -26,7 +26,7 @@ public class IndexController {
     public String doGet(HttpSession session) {
 
         // セッションからアカウント情報の取得
-        Account account = (Account) session.getAttribute(SessionKey.ACCOUNT);
+        AccountDto account = (AccountDto) session.getAttribute(SessionKey.ACCOUNT);
 
         // NULLでない場合
         if (account != null) {

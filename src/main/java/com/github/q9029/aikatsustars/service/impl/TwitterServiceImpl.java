@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 import com.github.q9029.aikatsustars.repository.AccountsDao;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
@@ -37,7 +37,7 @@ public class TwitterServiceImpl implements TwitterService {
     }
 
     @Override
-    public Account registAccount(AccessToken accessToken) throws TwitterException {
+    public AccountDto registAccount(AccessToken accessToken) throws TwitterException {
         // Twitterインスタンスを取得
         Twitter twitter = new TwitterFactory().getInstance();
 
@@ -47,7 +47,7 @@ public class TwitterServiceImpl implements TwitterService {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
         // アカウントを新規作成
-        Account account = new Account();
+        AccountDto account = new AccountDto();
         account.setId(user.getId());
         account.setName(user.getName());
         account.setScreenName(user.getScreenName());
@@ -65,7 +65,7 @@ public class TwitterServiceImpl implements TwitterService {
     }
 
     @Override
-    public User verify(Account account) throws TwitterException {
+    public User verify(AccountDto account) throws TwitterException {
         // アクセストークンを生成
         AccessToken accessToken = new AccessToken(account.getAccessToken(), account.getAccessTokenSecret());
 

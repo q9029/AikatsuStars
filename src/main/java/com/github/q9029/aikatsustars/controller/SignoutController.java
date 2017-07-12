@@ -1,6 +1,5 @@
 package com.github.q9029.aikatsustars.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -13,13 +12,13 @@ import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 @RequestMapping(value = RequestURI.SIGNOUT)
 public class SignoutController {
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String doGet(HttpServletRequest request, HttpSession session) {
+	@RequestMapping(method = RequestMethod.GET)
+	public String doGet(HttpSession session) {
 
-        // セッション情報の破棄
-        session.invalidate();
+		if (session != null) {
+			session.invalidate();
+		}
 
-        // indexにリダイレクト
-        return "redirect:/";
-    }
+		return "redirect:/";
+	}
 }

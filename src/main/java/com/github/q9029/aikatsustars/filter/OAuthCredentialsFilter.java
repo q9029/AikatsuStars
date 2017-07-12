@@ -21,52 +21,33 @@ import twitter4j.Twitter;
 
 public class OAuthCredentialsFilter implements Filter {
 
-    /** ロガー. */
-    private static final Logger LOG = Logger.getLogger(OAuthCredentialsFilter.class);
+	private static final Logger LOG = Logger.getLogger(OAuthCredentialsFilter.class);
 
-    @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-            throws IOException, ServletException {
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        HttpSession session = null;
+		HttpSession session = null;
+		try {
+			session = ((HttpServletRequest) request).getSession();
+			Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
+			twitter.verifyCredentials();
+			chain.doFilter(request, response);
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			if (session != null) {
+				session.invalidate();
+			}
+			((HttpServletResponse) response).sendRedirect(RequestURI.INDEX);
+		}
+	}
 
-        try {
-            // HttpSessionの取得
-            session = ((HttpServletRequest) request).getSession();
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
+		// do nothing.
+	}
 
-            // Twitterの取得
-            Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
-            if (twitter == null) {
-                // indexへリダイレクト
-                ((HttpServletResponse) response).sendRedirect(RequestURI.INDEX);
-            }
-
-            // OAuth有効性確認
-            twitter.verifyCredentials();
-
-            // 処理を継続
-            chain.doFilter(request, response);
-
-        } catch (Exception e) {
-            LOG.error("Invalid session.", e);
-
-            // セッションの破棄
-            if (session != null) {
-                session.invalidate();
-            }
-
-            // indexへリダイレクト
-            ((HttpServletResponse) response).sendRedirect(RequestURI.INDEX);
-        }
-    }
-
-    @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        // do nothing
-    }
-
-    @Override
-    public void destroy() {
-        // do nothing
-    }
+	@Override
+	public void destroy() {
+		// do nothing.
+	}
 }

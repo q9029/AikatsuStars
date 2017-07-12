@@ -1,0 +1,32 @@
+package com.github.q9029.aikatsustars.listener;
+
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionEvent;
+import javax.servlet.http.HttpSessionListener;
+
+import org.apache.log4j.Logger;
+
+public class SessionMonitoringLogListener implements HttpSessionListener {
+
+	private static final Logger LOG = Logger.getLogger(SessionMonitoringLogListener.class);
+
+	@Override
+	public void sessionCreated(HttpSessionEvent event) {
+		HttpSession session = event.getSession();
+		if (session != null) {
+			LOG.info("セッションが生成されました。id=" + session.getId());
+		} else {
+			LOG.info("セッションが生成されました。id=null");
+		}
+	}
+
+	@Override
+	public void sessionDestroyed(HttpSessionEvent event) {
+		HttpSession session = event.getSession();
+		if (session != null) {
+			LOG.info("セッションが破棄されました。id=" + session.getId());
+		} else {
+			LOG.info("セッションが破棄されました。id=null");
+		}
+	}
+}

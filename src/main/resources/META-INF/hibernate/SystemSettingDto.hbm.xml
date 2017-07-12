@@ -26,9 +26,9 @@
 		</property>
 	</class>
 
-	<query name="SystemSettings.loadAllValid">
+	<query name="SystemSettingsDao.loadAllValid">
 		<![CDATA[
-			from SystemSetting
+			from SystemSettingDto
 		]]>
 	</query>
 

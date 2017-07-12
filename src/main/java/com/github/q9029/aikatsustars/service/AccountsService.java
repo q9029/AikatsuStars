@@ -1,6 +1,6 @@
 package com.github.q9029.aikatsustars.service;
 
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 
 public interface AccountsService {
 
@@ -9,13 +9,13 @@ public interface AccountsService {
      * @param id
      * @return
      */
-    Account load(long id);
+    AccountDto load(long id);
 
     /**
      * アカウントを更新する.
      * @param account
      */
-    void update(Account account);
+    void update(AccountDto account);
 
     /**
      * 登録されているアカウントすべての有効性チェックを行う.

@@ -1,6 +1,6 @@
 package com.github.q9029.aikatsustars.service;
 
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 
 import twitter4j.TwitterException;
 import twitter4j.User;
@@ -13,7 +13,7 @@ public interface TwitterService {
      * アカウントの有効性チェックを行う.
      * @param account
      */
-    User verify(Account account) throws TwitterException;
+    User verify(AccountDto account) throws TwitterException;
 
     /**
      * リクエストトークンを取得する.
@@ -31,5 +31,5 @@ public interface TwitterService {
      */
     AccessToken getAccessToken(RequestToken requestToken, String verifier) throws TwitterException;
 
-    Account registAccount(AccessToken accessToken) throws TwitterException;
+    AccountDto registAccount(AccessToken accessToken) throws TwitterException;
 }

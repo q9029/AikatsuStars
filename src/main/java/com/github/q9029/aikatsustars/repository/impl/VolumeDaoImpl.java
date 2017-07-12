@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dto.Volume;
+import com.github.q9029.aikatsustars.dto.VolumeDto;
 import com.github.q9029.aikatsustars.repository.VolumeDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
@@ -20,16 +20,16 @@ public class VolumeDaoImpl implements VolumeDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public Volume load(long id) {
+    public VolumeDto load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリ実行
-        return session.load(Volume.class, id);
+        return session.load(VolumeDto.class, id);
     }
 
     @Override
-    public Serializable save(Volume volume) {
+    public Serializable save(VolumeDto volume) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -38,7 +38,7 @@ public class VolumeDaoImpl implements VolumeDao {
     }
 
     @Override
-    public void delete(Volume volume) {
+    public void delete(VolumeDto volume) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -47,12 +47,12 @@ public class VolumeDaoImpl implements VolumeDao {
     }
 
     @Override
-    public List<Volume> loadAll() {
+    public List<VolumeDto> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Volume> query = session.createNamedQuery(NamedQuery.Volume.loadAll, Volume.class);
+        Query<VolumeDto> query = session.createNamedQuery(NamedQuery.Volume.loadAll, VolumeDto.class);
 
         // クエリ実行
         return query.list();

@@ -3,10 +3,8 @@ package com.github.q9029.aikatsustars.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +20,6 @@ import twitter4j.TwitterException;
 @Controller
 @RequestMapping(value = RequestURI.SEARCH)
 public class SearchController {
-
-	private static final Logger LOG = Logger.getLogger(SearchController.class);
 
 	@Autowired
 	private SearchService searchService;
@@ -50,11 +46,5 @@ public class SearchController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String doPost(HttpServletRequest request, HttpSession session) throws TwitterException {
 		return "redirect:/search";
-	}
-
-	@ExceptionHandler(Exception.class)
-	public String handleException(Exception e) {
-		LOG.error("System error.", e);
-		return View.SEARCH;
 	}
 }

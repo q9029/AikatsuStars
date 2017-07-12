@@ -9,7 +9,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dto.Account;
+import com.github.q9029.aikatsustars.dto.AccountDto;
 import com.github.q9029.aikatsustars.repository.AccountsDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
 
@@ -20,16 +20,16 @@ public class AccountsDaoImpl implements AccountsDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public Account load(long id) {
+    public AccountDto load(long id) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリ実行
-        return session.get(Account.class, id);
+        return session.get(AccountDto.class, id);
     }
 
     @Override
-    public Serializable save(Account account) {
+    public Serializable save(AccountDto account) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -38,7 +38,7 @@ public class AccountsDaoImpl implements AccountsDao {
     }
 
     @Override
-    public void update(Account account) {
+    public void update(AccountDto account) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -47,7 +47,7 @@ public class AccountsDaoImpl implements AccountsDao {
     }
 
     @Override
-    public void delete(Account account) {
+    public void delete(AccountDto account) {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
@@ -56,12 +56,12 @@ public class AccountsDaoImpl implements AccountsDao {
     }
 
     @Override
-    public List<Account> loadAll() {
+    public List<AccountDto> loadAll() {
         // セッションの取得
         Session session = sessionFactory.getCurrentSession();
 
         // クエリの取得
-        Query<Account> query = session.createNamedQuery(NamedQuery.Account.loadAll, Account.class);
+        Query<AccountDto> query = session.createNamedQuery(NamedQuery.Account.loadAll, AccountDto.class);
 
         // クエリ実行
         return query.list();
