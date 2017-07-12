@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.dto;
+package com.github.q9029.aikatsustars.repository.dto;
 
 import java.sql.Timestamp;
 

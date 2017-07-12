@@ -1,6 +1,6 @@
 package com.github.q9029.aikatsustars.service;
 
-import com.github.q9029.aikatsustars.dto.AccountDto;
+import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 
 public interface AccountsService {
 

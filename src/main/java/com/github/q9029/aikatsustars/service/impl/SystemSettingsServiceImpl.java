@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.q9029.aikatsustars.repository.SystemSettingsDao;
 import com.github.q9029.aikatsustars.service.SystemSettingsService;
-import com.github.q9029.aikatsustars.util.SystemSettingsUtil;
+import com.github.q9029.aikatsustars.service.util.SystemSettingsUtil;
 
 @Service
 public class SystemSettingsServiceImpl implements SystemSettingsService {

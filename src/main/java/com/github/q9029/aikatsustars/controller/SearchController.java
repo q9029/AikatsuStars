@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.github.q9029.aikatsustars.controller.bean.SearchFormBean;
 import com.github.q9029.aikatsustars.controller.constant.RequestKey;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.View;
-import com.github.q9029.aikatsustars.form.SearchFormBean;
 import com.github.q9029.aikatsustars.service.SearchService;
 
 import twitter4j.TwitterException;

@@ -9,12 +9,12 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dto.VolumeDto;
-import com.github.q9029.aikatsustars.repository.VolumeDao;
+import com.github.q9029.aikatsustars.repository.VolumesDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
+import com.github.q9029.aikatsustars.repository.dto.VolumeDto;
 
 @Repository
-public class VolumeDaoImpl implements VolumeDao {
+public class VolumesDaoImpl implements VolumesDao {
 
     @Autowired
     private SessionFactory sessionFactory;

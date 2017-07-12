@@ -1,6 +1,6 @@
 package com.github.q9029.aikatsustars.service;
 
-import com.github.q9029.aikatsustars.dto.AccountDto;
+import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 
 import twitter4j.TwitterException;
 import twitter4j.User;

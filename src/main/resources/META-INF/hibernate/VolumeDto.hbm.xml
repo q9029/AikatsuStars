@@ -1,38 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping
-		PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.github.q9029.aikatsustars.dto">
 
-		<class name="VolumeDto" table="volumes">
-				<id name="id">
-						<column name="id"/>
-				</id>
-				<property name="name">
-						<column name="name"/>
-				</property>
-				<property name="valid">
-						<column name="valid"/>
-				</property>
-				<property name="createdAt">
-						<column name="created_at"/>
-				</property>
-				<property name="modifiedAt">
-						<column name="modified_at"/>
-				</property>
-		</class>
+	<class name="VolumeDto" table="volumes">
+		<id name="id">
+			<column name="id"/>
+		</id>
+		<property name="name">
+			<column name="name"/>
+		</property>
+		<property name="displayOrder">
+			<column name="display_order"/>
+		</property>
+		<property name="valid">
+			<column name="valid"/>
+		</property>
+		<property name="createdAt">
+			<column name="created_at"/>
+		</property>
+		<property name="modifiedAt">
+			<column name="modified_at"/>
+		</property>
+	</class>
 
-		<query name="VolumesDao.findAll">
-				<![CDATA[
-						from VolumeDto
-				]]>
-		</query>
-
-		<query name="VolumesDao.findById">
-				<![CDATA[
-						from VolumeDto v where v.id = :id
-				]]>
-		</query>
+	<query name="VolumesDao.loadAll">
+		<![CDATA[
+			from
+				VolumeDto v
+			where
+				v.valid = ture
+			order by
+				v.displayOrder
+		]]>
+	</query>
 
 </hibernate-mapping>

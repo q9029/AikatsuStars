@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 import com.github.q9029.aikatsustars.controller.constant.View;
-import com.github.q9029.aikatsustars.dto.AccountDto;
+import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 import com.github.q9029.aikatsustars.service.TwitterService;
 
 import twitter4j.TwitterException;

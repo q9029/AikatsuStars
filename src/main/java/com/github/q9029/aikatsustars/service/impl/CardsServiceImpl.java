@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.github.q9029.aikatsustars.dto.CardDto;
 import com.github.q9029.aikatsustars.repository.CardsDao;
+import com.github.q9029.aikatsustars.repository.dto.CardDto;
 import com.github.q9029.aikatsustars.service.CardsService;
 
 @Service

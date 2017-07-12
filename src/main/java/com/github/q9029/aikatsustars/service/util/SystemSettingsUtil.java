@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.util;
+package com.github.q9029.aikatsustars.service.util;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import com.github.q9029.aikatsustars.dto.SystemSettingDto;
+import com.github.q9029.aikatsustars.repository.dto.SystemSettingDto;
 
 public class SystemSettingsUtil {
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.github.q9029.aikatsustars.controller.constant.RequestKey;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
-import com.github.q9029.aikatsustars.dto.AccountDto;
+import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 import com.github.q9029.aikatsustars.service.AccountsService;
 import com.github.q9029.aikatsustars.service.TwitterService;
 

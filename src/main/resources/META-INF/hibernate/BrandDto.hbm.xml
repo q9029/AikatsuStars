@@ -5,15 +5,15 @@
 
 <hibernate-mapping package="com.github.q9029.aikatsustars.dto">
 
-	<class name="SystemSettingDto" table="system_settings">
+	<class name="BrandDto" table="brands">
 		<id name="id">
 			<column name="id"/>
 		</id>
-		<property name="key">
-			<column name="key"/>
+		<property name="name">
+			<column name="name"/>
 		</property>
-		<property name="value">
-			<column name="value"/>
+		<property name="displayOrder">
+			<column name="display_order"/>
 		</property>
 		<property name="valid">
 			<column name="valid"/>
@@ -26,12 +26,14 @@
 		</property>
 	</class>
 
-	<query name="SystemSettingsDao.loadAll">
+	<query name="BrandsDao.loadAll">
 		<![CDATA[
 			from
-				SystemSettingDto s
+				BrandDto b
 			where
-				s.valid = ture
+				b.valid = ture
+			order by
+				b.displayOrder
 		]]>
 	</query>
 

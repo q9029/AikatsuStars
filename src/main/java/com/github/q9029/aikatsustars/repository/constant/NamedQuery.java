@@ -5,22 +5,22 @@ public class NamedQuery {
 	private NamedQuery() {}
 
 	public class Account {
-		public static final String loadAll = "Account.loadAll";
+		public static final String loadAll = "AccountsDao.loadAll";
 	}
 
 	public class Card {
-		public static final String loadAll = "Card.loadAll";
+		public static final String loadAll = "CardsDao.loadAll";
 	}
 
 	public class Volume {
-		public static final String loadAll = "Volume.loadAll";
+		public static final String loadAll = "VolumesDao.loadAll";
 	}
 
 	public class VolumeCard {
-		public static final String loadAll = "VolumeCard.loadAll";
+		public static final String loadAll = "VolumeCardsDao.loadAll";
 	}
 
 	public class SystemSettings {
-		public static final String loadAll = "SystemSettings.loadAll";
+		public static final String loadAll = "SystemSettingsDao.loadAll";
 	}
 }

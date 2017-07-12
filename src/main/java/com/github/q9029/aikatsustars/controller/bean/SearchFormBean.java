@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.form;
+package com.github.q9029.aikatsustars.controller.bean;
 
 import java.util.List;
 

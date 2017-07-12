@@ -14,7 +14,7 @@ import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.service.SystemSettingsService;
 
 @RestController
-@RequestMapping(value = RequestURI.JOB_RELOAD)
+@RequestMapping(value = RequestURI.JOB_RELOAD_SYSTEM_SETTINGS)
 public class JobReloadController {
 
 	private static final Logger LOG = Logger.getLogger(JobCleanController.class);

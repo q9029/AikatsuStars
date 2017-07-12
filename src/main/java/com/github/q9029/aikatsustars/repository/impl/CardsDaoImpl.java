@@ -9,9 +9,9 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.github.q9029.aikatsustars.dto.CardDto;
 import com.github.q9029.aikatsustars.repository.CardsDao;
 import com.github.q9029.aikatsustars.repository.constant.NamedQuery;
+import com.github.q9029.aikatsustars.repository.dto.CardDto;
 
 @Repository
 public class CardsDaoImpl implements CardsDao {
