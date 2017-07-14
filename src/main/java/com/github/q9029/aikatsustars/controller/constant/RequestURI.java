@@ -1,8 +1,5 @@
 package com.github.q9029.aikatsustars.controller.constant;
 
-/**
- * Controllerで使用するURIの定数クラス.
- */
 public class RequestURI {
 
 	private RequestURI() {}
@@ -15,13 +12,18 @@ public class RequestURI {
 	public static final String SEARCH = "/search";
 	public static final String PRIVACYPOLICY = "/privacypolicy";
 	public static final String TERMS = "/terms";
+	public static final String ERROR = "/error";
 
-	public static final String JOB_HEALTHCHECK = "/job/healthcheck";
+	public class Job {
 
-	public static final String JOB_CLEAN_ACCOUNTS = "/job/clean/accounts";
+		public static final String HEALTHCHECK = "/job/healthcheck";
+		public static final String CLEAN_ACCOUNTS = "/job/clean/accounts";
 
-	public static final String JOB_RELOAD_SYSTEM_SETTINGS = "/job/reload/system_settings";
-	public static final String JOB_RELOAD_VOLUMES = "/job/reload/volumes";
-	public static final String JOB_RELOAD_BRANDS = "/job/reload/brands";
-	public static final String JOB_RELOAD_RARE_TYPES = "/job/reload/rare_types";
+		public class Reload {
+			public static final String SYSTEM_SETTINGS = "/job/reload/system_settings";
+			public static final String VOLUMES = "/job/reload/volumes";
+			public static final String BRANDS = "/job/reload/brands";
+			public static final String RARE_TYPES = "/job/reload/rare_types";
+		}
+	}
 }

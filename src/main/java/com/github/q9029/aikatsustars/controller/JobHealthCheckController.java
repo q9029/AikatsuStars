@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 
 @RestController
-@RequestMapping(value = RequestURI.JOB_HEALTHCHECK)
+@RequestMapping(value = RequestURI.Job.HEALTHCHECK)
 public class JobHealthCheckController {
 
 	private static final Logger LOG = Logger.getLogger(JobHealthCheckController.class);
 
-	@RequestMapping(method = RequestMethod.HEAD)
+	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<String> doHead() {
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Connection", "close");

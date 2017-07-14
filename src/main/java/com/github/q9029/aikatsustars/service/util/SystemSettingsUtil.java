@@ -12,21 +12,21 @@ public class SystemSettingsUtil {
 
 	private static final Logger LOG = Logger.getLogger(SystemSettingsUtil.class);
 
-	private static final Map<String, String> systemSettingsMap = new HashMap<>();
+	private static final Map<String, String> systemSettingMap = new HashMap<>();
 
 	private SystemSettingsUtil() {}
 
 	public static String getValue(String key) {
-		return systemSettingsMap.get(key);
+		return systemSettingMap.get(key);
 	}
 
-	public static void reload(List<SystemSettingDto> systemSettingList) {
-		synchronized (systemSettingsMap) {
+	public static void reload(List<SystemSettingDto> updatedList) {
+		synchronized (systemSettingMap) {
 			try {
 				LOG.info("システム設定のリロードを開始します。");
-				systemSettingsMap.clear();
-				for (SystemSettingDto systemSetting : systemSettingList) {
-					systemSettingsMap.put(systemSetting.getKey(), systemSetting.getValue());
+				systemSettingMap.clear();
+				for (SystemSettingDto dto : updatedList) {
+					systemSettingMap.put(dto.getKey(), dto.getValue());
 				}
 				LOG.info("システム設定のリロードを終了しました。");
 			} catch (Exception e) {

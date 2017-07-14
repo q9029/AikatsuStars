@@ -16,22 +16,27 @@ import org.apache.log4j.Logger;
 
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
+import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 
-import twitter4j.Twitter;
+public class AdministratorFilter implements Filter {
 
-public class OAuthCredentialsFilter implements Filter {
-
-	private static final Logger LOG = Logger.getLogger(OAuthCredentialsFilter.class);
+	private static final Logger LOG = Logger.getLogger(AdministratorFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		HttpSession session = null;
 		try {
-			session = ((HttpServletRequest) request).getSession();
-			Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
-			twitter.verifyCredentials();
-			chain.doFilter(request, response);
+			HttpServletRequest req = (HttpServletRequest) request;
+			session = req.getSession();
+			String requestUri = req.getRequestURI();
+			AccountDto dto = (AccountDto) session.getAttribute(SessionKey.ACCOUNT);
+			if (!RequestURI.Job.HEALTHCHECK.equals(requestUri) && !Boolean.TRUE.equals(dto.getAdministrative())) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/error");
+				dispatcher.forward(request, response);
+			} else {
+				chain.doFilter(request, response);
+			}
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			if (session != null) {

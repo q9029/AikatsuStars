@@ -7,7 +7,6 @@ public class RequestKey {
 	public static final String OAUTH_VERIFIER = "oauth_verifier";
 	public static final String TWEET = "tweet";
 
-
 	public class Attribute {
 		public static final String VOLUME_LIST = "volumeList";
 		public static final String TYPE_LIST = "typeList";
