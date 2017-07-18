@@ -9,27 +9,27 @@ import twitter4j.auth.RequestToken;
 
 public interface TwitterService {
 
-    /**
-     * アカウントの有効性チェックを行う.
-     * @param account
-     */
-    User verify(AccountDto account) throws TwitterException;
+	/**
+	 * アカウントの有効性チェックを行う.
+	 * @param account
+	 */
+	User verify(AccountDto account) throws TwitterException;
 
-    /**
-     * リクエストトークンを取得する.
-     * @return
-     * @throws TwitterException
-     */
-    RequestToken getRequestToken() throws TwitterException;
+	/**
+	 * リクエストトークンを取得する.
+	 * @return
+	 * @throws TwitterException
+	 */
+	RequestToken getRequestToken() throws TwitterException;
 
-    /**
-     * アクセストークンを取得する.
-     * @param requestToken
-     * @param verifier
-     * @return
-     * @throws TwitterException
-     */
-    AccessToken getAccessToken(RequestToken requestToken, String verifier) throws TwitterException;
+	/**
+	 * アクセストークンを取得する.
+	 * @param requestToken
+	 * @param verifier
+	 * @return
+	 * @throws TwitterException
+	 */
+	AccessToken getAccessToken(RequestToken requestToken, String verifier) throws TwitterException;
 
-    AccountDto registAccount(AccessToken accessToken) throws TwitterException;
+	AccountDto registAccount(AccessToken accessToken) throws TwitterException;
 }

@@ -19,27 +19,27 @@ import twitter4j.TwitterException;
 @RequestMapping(value = RequestURI.INDEX)
 public class IndexController {
 
-    @Autowired
-    private TwitterService twitterService;
+	@Autowired
+	private TwitterService twitterService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String doGet(HttpSession session) {
+	@RequestMapping(method = RequestMethod.GET)
+	public String doGet(HttpSession session) {
 
-        // セッションからアカウント情報の取得
-        AccountDto account = (AccountDto) session.getAttribute(SessionKey.ACCOUNT);
+		// セッションからアカウント情報の取得
+		AccountDto account = (AccountDto) session.getAttribute(SessionKey.ACCOUNT);
 
-        // NULLでない場合
-        if (account != null) {
-            // 有効性チェック
-            try {
-                twitterService.verify(account);
+		// NULLでない場合
+		if (account != null) {
+			// 有効性チェック
+			try {
+				twitterService.verify(account);
 
-            } catch (TwitterException e) {
-                // 有効でない場合、セッションを破棄
-                session.invalidate();
-            }
-        }
-        // index.jspを返却
-         return View.INDEX;
-    }
+			} catch (TwitterException e) {
+				// 有効でない場合、セッションを破棄
+				session.invalidate();
+			}
+		}
+		// index.jspを返却
+		return View.INDEX;
+	}
 }

@@ -16,45 +16,45 @@ import com.github.q9029.aikatsustars.repository.dto.VolumeDto;
 @Repository
 public class VolumesDaoImpl implements VolumesDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	@Autowired
+	private SessionFactory sessionFactory;
 
-    @Override
-    public VolumeDto load(long id) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public VolumeDto load(long id) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        return session.load(VolumeDto.class, id);
-    }
+		// クエリ実行
+		return session.load(VolumeDto.class, id);
+	}
 
-    @Override
-    public Serializable save(VolumeDto volume) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public Serializable save(VolumeDto volume) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        return session.save(volume);
-    }
+		// クエリ実行
+		return session.save(volume);
+	}
 
-    @Override
-    public void delete(VolumeDto volume) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public void delete(VolumeDto volume) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        session.delete(volume);
-    }
+		// クエリ実行
+		session.delete(volume);
+	}
 
-    @Override
-    public List<VolumeDto> loadAll() {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public List<VolumeDto> loadAll() {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<VolumeDto> query = session.createNamedQuery(NamedQuery.Volume.loadAll, VolumeDto.class);
+		// クエリの取得
+		Query<VolumeDto> query = session.createNamedQuery(NamedQuery.Volume.loadAll, VolumeDto.class);
 
-        // クエリ実行
-        return query.list();
-    }
+		// クエリ実行
+		return query.list();
+	}
 }

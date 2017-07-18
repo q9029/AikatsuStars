@@ -11,7 +11,7 @@ import com.github.q9029.aikatsustars.controller.constant.View;
 
 @Controller
 @RequestMapping(value = RequestURI.ERROR)
-public class ErrorController {
+public class NotFoundController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String doGet(HttpSession session) {

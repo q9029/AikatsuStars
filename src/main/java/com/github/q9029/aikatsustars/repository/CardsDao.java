@@ -7,11 +7,11 @@ import com.github.q9029.aikatsustars.repository.dto.CardDto;
 
 public interface CardsDao {
 
-    CardDto load(long id);
+	CardDto load(long id);
 
-    Serializable save(CardDto account);
+	Serializable save(CardDto account);
 
-    void delete(CardDto account);
+	void delete(CardDto account);
 
-    List<CardDto> loadAll();
+	List<CardDto> loadAll();
 }

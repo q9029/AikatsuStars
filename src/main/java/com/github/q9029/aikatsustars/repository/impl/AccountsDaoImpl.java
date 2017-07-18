@@ -16,54 +16,54 @@ import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 @Repository
 public class AccountsDaoImpl implements AccountsDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	@Autowired
+	private SessionFactory sessionFactory;
 
-    @Override
-    public AccountDto load(long id) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public AccountDto load(long id) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        return session.get(AccountDto.class, id);
-    }
+		// クエリ実行
+		return session.get(AccountDto.class, id);
+	}
 
-    @Override
-    public Serializable save(AccountDto account) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public Serializable save(AccountDto account) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        return session.save(account);
-    }
+		// クエリ実行
+		return session.save(account);
+	}
 
-    @Override
-    public void update(AccountDto account) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public void update(AccountDto account) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        session.update(account);
-    }
+		// クエリ実行
+		session.update(account);
+	}
 
-    @Override
-    public void delete(AccountDto account) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public void delete(AccountDto account) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        session.delete(account);
-    }
+		// クエリ実行
+		session.delete(account);
+	}
 
-    @Override
-    public List<AccountDto> loadAll() {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public List<AccountDto> loadAll() {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<AccountDto> query = session.createNamedQuery(NamedQuery.Account.loadAll, AccountDto.class);
+		// クエリの取得
+		Query<AccountDto> query = session.createNamedQuery(NamedQuery.Account.loadAll, AccountDto.class);
 
-        // クエリ実行
-        return query.list();
-    }
+		// クエリ実行
+		return query.list();
+	}
 }

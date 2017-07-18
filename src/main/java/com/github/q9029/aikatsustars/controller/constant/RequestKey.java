@@ -4,9 +4,6 @@ public class RequestKey {
 
 	private RequestKey() {}
 
-	public static final String OAUTH_VERIFIER = "oauth_verifier";
-	public static final String TWEET = "tweet";
-
 	public class Attribute {
 		public static final String VOLUME_LIST = "volumeList";
 		public static final String TYPE_LIST = "typeList";
@@ -16,6 +13,7 @@ public class RequestKey {
 	}
 
 	public class Parameter {
+		public static final String OAUTH_VERIFIER = "oauth_verifier";
 		public static final String KEYWORD = "keyword";
 		public static final String VOLUME = "volume";
 		public static final String TYPE = "type";

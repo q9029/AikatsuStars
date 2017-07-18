@@ -1,14 +1,13 @@
 package com.github.q9029.aikatsustars.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.github.q9029.aikatsustars.controller.constant.RequestKey;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 import com.github.q9029.aikatsustars.repository.dto.AccountDto;
@@ -30,17 +29,14 @@ public class CallbackController {
 	private AccountsService accountsService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public String doGet(HttpServletRequest request, HttpSession session) throws TwitterException {
+	public String doGet(@ModelAttribute String oauthVerifier, HttpSession session) throws TwitterException {
 
 		try {
 			// セッションからリクエストトークンを取得
 			RequestToken requestToken = (RequestToken) session.getAttribute(SessionKey.REQUEST_TOKEN);
 
-			// リクエストからOAuth認証結果を取得
-			String verifier = request.getParameter(RequestKey.OAUTH_VERIFIER);
-
 			// アクセストークンを取得
-			AccessToken accessToken = twitterService.getAccessToken(requestToken, verifier);
+			AccessToken accessToken = twitterService.getAccessToken(requestToken, oauthVerifier);
 
 			AccountDto account = accountsService.load(accessToken.getUserId());
 

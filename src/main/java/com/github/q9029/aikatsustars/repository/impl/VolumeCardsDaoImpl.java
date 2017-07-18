@@ -16,45 +16,45 @@ import com.github.q9029.aikatsustars.repository.dto.VolumeCardDto;
 @Repository
 public class VolumeCardsDaoImpl implements VolumeCardsDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
+	@Autowired
+	private SessionFactory sessionFactory;
 
-    @Override
-    public VolumeCardDto load(long id) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public VolumeCardDto load(long id) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        return session.load(VolumeCardDto.class, id);
-    }
+		// クエリ実行
+		return session.load(VolumeCardDto.class, id);
+	}
 
-    @Override
-    public Serializable save(VolumeCardDto volumeCard) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public Serializable save(VolumeCardDto volumeCard) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        return session.save(volumeCard);
-    }
+		// クエリ実行
+		return session.save(volumeCard);
+	}
 
-    @Override
-    public void delete(VolumeCardDto volumeCard) {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public void delete(VolumeCardDto volumeCard) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリ実行
-        session.delete(volumeCard);
-    }
+		// クエリ実行
+		session.delete(volumeCard);
+	}
 
-    @Override
-    public List<VolumeCardDto> loadAll() {
-        // セッションの取得
-        Session session = sessionFactory.getCurrentSession();
+	@Override
+	public List<VolumeCardDto> loadAll() {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
 
-        // クエリの取得
-        Query<VolumeCardDto> query = session.createNamedQuery(NamedQuery.VolumeCard.loadAll, VolumeCardDto.class);
+		// クエリの取得
+		Query<VolumeCardDto> query = session.createNamedQuery(NamedQuery.VolumeCard.loadAll, VolumeCardDto.class);
 
-        // クエリ実行
-        return query.list();
-    }
+		// クエリ実行
+		return query.list();
+	}
 }

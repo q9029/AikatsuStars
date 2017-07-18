@@ -19,14 +19,14 @@ import twitter4j.TwitterException;
 @RequestMapping(value = RequestURI.CARDLIST)
 public class CardListController {
 
-    @Autowired
-    private CardsService cardsService;
+	@Autowired
+	private CardsService cardsService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String doGet(HttpServletRequest request, HttpSession session) throws TwitterException {
-        String volume = request.getParameter("volume");
-        volume = !StringUtils.isEmpty(volume) ? volume : "1";
-        request.setAttribute("cardlist", cardsService.getAllCards());
-        return View.CARDLIST;
-    }
+	@RequestMapping(method = RequestMethod.GET)
+	public String doGet(HttpServletRequest request, HttpSession session) throws TwitterException {
+		String volume = request.getParameter("volume");
+		volume = !StringUtils.isEmpty(volume) ? volume : "1";
+		request.setAttribute("cardlist", cardsService.getAllCards());
+		return View.CARDLIST;
+	}
 }

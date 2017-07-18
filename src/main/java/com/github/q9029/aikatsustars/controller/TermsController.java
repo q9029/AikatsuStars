@@ -9,7 +9,7 @@ import com.github.q9029.aikatsustars.controller.constant.View;
 
 @Controller
 @RequestMapping(value = RequestURI.TERMS)
-public class TermOfServiceController {
+public class TermsController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String doGet() {

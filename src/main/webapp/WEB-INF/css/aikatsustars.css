@@ -1,110 +1,110 @@
-/* Šî–{İ’è */
+/* åŸºæœ¬è¨­å®š */
 html {
-    overflow-y: scroll;
-    overflow: -moz-scrollbars-vertical;
+	overflow-y: scroll;
+	overflow: -moz-scrollbars-vertical;
 }
 body {
-    margin: 0;
-    min-width: 300px;
+	margin: 0;
+	min-width: 300px;
 }
 a {
-    cursor:pointer;
+	cursor:pointer;
 }
 .container-fluid {
-    padding-right: 0px;
-    padding-left: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
 }
 .container {
-    padding-right: 0px;
-    padding-left: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
 }
 .container {
-    padding-right: 0px;
-    padding-left: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
 }
 .navbar > .container {
-    padding-right: 15px;
-    padding-left: 15px;
+	padding-right: 15px;
+	padding-left: 15px;
 }
 .contents {
-    padding-top: 10px;
+	padding-top: 10px;
 }
 .contents > .container {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 .panel {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 .h1, .h2, .h3, h1, h2, h3 {
-    margin-top: 0px;
+	margin-top: 0px;
 }
 span[class~="blank"] {
-    margin-right: 0.5em;
+	margin-right: 0.5em;
 }
 img {
-    width: 100%;
+	width: 100%;
 }
 .row-eq-height > .col-sm-1, .col-xs-3 {
-    padding: 0px;
+	padding: 0px;
 }
 .row-eq-height {
-    display:-webkit-box;
-    display:-moz-box;
-    display:-webkit-flexbox;
-    display:-moz-flexbox;
-    display:-ms-flexbox;
-    display:-webkit-flex;
-    display:-moz-flex;
-    display:flex;
-    -webkit-box-lines:multiple;
-    -moz-box-lines:multiple;
-    -webkit-flex-wrap:wrap;
-    -moz-flex-wrap:wrap;
-    -ms-flex-wrap:wrap;
-    flex-wrap:wrap;
+	display:-webkit-box;
+	display:-moz-box;
+	display:-webkit-flexbox;
+	display:-moz-flexbox;
+	display:-ms-flexbox;
+	display:-webkit-flex;
+	display:-moz-flex;
+	display:flex;
+	-webkit-box-lines:multiple;
+	-moz-box-lines:multiple;
+	-webkit-flex-wrap:wrap;
+	-moz-flex-wrap:wrap;
+	-ms-flex-wrap:wrap;
+	flex-wrap:wrap;
 }
 .form-horizontal {
-    width: 80%;
-    margin: auto;
+	width: 80%;
+	margin: auto;
 }
 .thumbnail {
-    cursor:pointer;
-    margin-bottom: 5px;
+	cursor:pointer;
+	margin-bottom: 5px;
 }
 .thumbnail > .caption {
-    font-size: xx-small;
-    text-align: center;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-    padding: 5px;
+	font-size: xx-small;
+	text-align: center;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	padding: 5px;
 }
 
-/* ƒiƒrƒQ[ƒVƒ‡ƒ“ƒo[ */
+/* ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³ãƒãƒ¼ */
 .navbar {
-    border-radius: 0px;
-    margin-bottom: 10px;
+	border-radius: 0px;
+	margin-bottom: 10px;
 }
 
-/* ƒtƒbƒ^[ */
+/* ãƒ•ãƒƒã‚¿ãƒ¼ */
 footer {
-    margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 hr {
-    margin-top: 0px;
-    margin-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 10px;
 }
 
-/* XVî•ñ */
+/* æ›´æ–°æƒ…å ± */
 .ellipsis {
-    width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-text-overflow: ellipsis;
-    -o-text-overflow: ellipsis;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-webkit-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
 }

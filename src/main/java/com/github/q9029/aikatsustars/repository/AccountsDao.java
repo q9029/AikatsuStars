@@ -7,13 +7,13 @@ import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 
 public interface AccountsDao {
 
-    AccountDto load(long id);
+	AccountDto load(long id);
 
-    Serializable save(AccountDto account);
+	Serializable save(AccountDto account);
 
-    void update(AccountDto account);
+	void update(AccountDto account);
 
-    void delete(AccountDto account);
+	void delete(AccountDto account);
 
-    List<AccountDto> loadAll();
+	List<AccountDto> loadAll();
 }

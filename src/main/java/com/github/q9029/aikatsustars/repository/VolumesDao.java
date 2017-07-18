@@ -7,11 +7,11 @@ import com.github.q9029.aikatsustars.repository.dto.VolumeDto;
 
 public interface VolumesDao {
 
-    VolumeDto load(long id);
+	VolumeDto load(long id);
 
-    Serializable save(VolumeDto account);
+	Serializable save(VolumeDto account);
 
-    void delete(VolumeDto account);
+	void delete(VolumeDto account);
 
-    List<VolumeDto> loadAll();
+	List<VolumeDto> loadAll();
 }
