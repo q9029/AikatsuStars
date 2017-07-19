@@ -31,6 +31,7 @@
 	</beans:bean>
 
 	<!-- Properties -->
+	<!--
 	<beans:bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<beans:property name="locations">
 			<beans:list>
@@ -38,6 +39,7 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
+	-->
 
 	<!-- DatabaseAccess -->
 	<beans:bean id="databaseUrl" class="java.net.URI">
@@ -81,6 +83,7 @@
 			<beans:props>
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<beans:prop key="hibernate.query.substitutions">true 1, false 0</beans:prop>
 			</beans:props>
 		</beans:property>
 	</beans:bean>

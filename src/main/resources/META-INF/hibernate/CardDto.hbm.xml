@@ -3,7 +3,7 @@
 	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="com.github.q9029.aikatsustars.dto">
+<hibernate-mapping package="com.github.q9029.aikatsustars.repository.dto">
 
 	<class name="CardDto" table="cards">
 		<id name="id">
@@ -35,16 +35,15 @@
 	<query name="CardsDao.loadAll">
 		<![CDATA[
 			from
-				Card c
+				CardDto c
 			where
 				c.valid = true
 		]]>
 	</query>
-
 	<query name="CardsDao.findById">
 		<![CDATA[
 			from
-				Card c
+				CardDto c
 			where
 				c.id = :id
 		]]>

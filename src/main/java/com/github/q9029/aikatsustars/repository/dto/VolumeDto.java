@@ -6,6 +6,7 @@ public class VolumeDto {
 
 	private Long id;
 	private String name;
+	private Integer displayOrder;
 	private Boolean valid;
 	private Timestamp createdAt;
 	private Timestamp modifiedAt;
@@ -21,6 +22,12 @@ public class VolumeDto {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public Integer getDisplayOrder() {
+		return displayOrder;
+	}
+	public void setDisplayOrder(Integer displayOrder) {
+		this.displayOrder = displayOrder;
 	}
 	public Boolean getValid() {
 		return valid;

@@ -9,7 +9,7 @@ public class CardDto {
 	private String name;
 	private String url;
 	private Integer rareType;
-	private Boolean valid;
+	private boolean valid;
 	private Timestamp createdAt;
 	private Timestamp modifiedAt;
 
@@ -43,10 +43,10 @@ public class CardDto {
 	public void setRareType(Integer rareType) {
 		this.rareType = rareType;
 	}
-	public Boolean getValid() {
+	public boolean isValid() {
 		return valid;
 	}
-	public void setValid(Boolean valid) {
+	public void setValid(boolean valid) {
 		this.valid = valid;
 	}
 	public Timestamp getCreatedAt() {

@@ -17,7 +17,7 @@ public class StartupServlet extends HttpServlet implements ApplicationContextAwa
 
 	private static final Logger LOG = Logger.getLogger(SystemSettingsUtil.class);
 
-	private ApplicationContext applicationContext;
+	private static ApplicationContext applicationContext;
 
 	@Override
 	public void setApplicationContext(ApplicationContext context) throws BeansException {
