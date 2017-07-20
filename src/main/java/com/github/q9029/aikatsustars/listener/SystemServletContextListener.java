@@ -5,7 +5,10 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.log4j.LogManager;
 
-public class ShutdownLogManagerListener implements ServletContextListener {
+/*
+ * Herokuだといらない...
+ */
+public class SystemServletContextListener implements ServletContextListener {
 
 	@Override
 	public void contextDestroyed(ServletContextEvent event) {

@@ -6,9 +6,9 @@ import javax.servlet.http.HttpSessionListener;
 
 import org.apache.log4j.Logger;
 
-public class SessionMonitoringLogListener implements HttpSessionListener {
+public class SystemHttpSessionListener implements HttpSessionListener {
 
-	private static final Logger LOG = Logger.getLogger(SessionMonitoringLogListener.class);
+	private static final Logger LOG = Logger.getLogger(SystemHttpSessionListener.class);
 
 	@Override
 	public void sessionCreated(HttpSessionEvent event) {

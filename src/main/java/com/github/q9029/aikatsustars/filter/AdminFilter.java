@@ -18,9 +18,9 @@ import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.controller.constant.SessionKey;
 import com.github.q9029.aikatsustars.repository.dto.AccountDto;
 
-public class AdministratorFilter implements Filter {
+public class AdminFilter implements Filter {
 
-	private static final Logger LOG = Logger.getLogger(AdministratorFilter.class);
+	private static final Logger LOG = Logger.getLogger(AdminFilter.class);
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

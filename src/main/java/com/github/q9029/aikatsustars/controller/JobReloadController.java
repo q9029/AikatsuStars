@@ -25,7 +25,7 @@ public class JobReloadController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<String> doHead() {
 
-		systemSettingsService.reload();
+		systemSettingsService.cacheRepositoryData();
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Connection", "close");

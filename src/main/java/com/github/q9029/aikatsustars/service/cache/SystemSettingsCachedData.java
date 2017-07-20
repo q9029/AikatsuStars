@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.service.util;
+package com.github.q9029.aikatsustars.service.cache;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,19 +8,19 @@ import org.apache.log4j.Logger;
 
 import com.github.q9029.aikatsustars.repository.dto.SystemSettingDto;
 
-public class SystemSettingsUtil {
+public class SystemSettingsCachedData {
 
-	private static final Logger LOG = Logger.getLogger(SystemSettingsUtil.class);
+	private static final Logger LOG = Logger.getLogger(SystemSettingsCachedData.class);
 
 	private static final Map<String, String> systemSettingMap = new HashMap<>();
 
-	private SystemSettingsUtil() {}
+	private SystemSettingsCachedData() {}
 
-	public static String getValue(String key) {
+	public static String getCachedValue(String key) {
 		return systemSettingMap.get(key);
 	}
 
-	public static void reload(List<SystemSettingDto> updatedList) {
+	public static void cache(List<SystemSettingDto> updatedList) {
 		synchronized (systemSettingMap) {
 			try {
 				LOG.info("システム設定のリロードを開始します。");

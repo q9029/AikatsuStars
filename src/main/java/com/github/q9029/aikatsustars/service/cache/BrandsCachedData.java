@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.service.util;
+package com.github.q9029.aikatsustars.service.cache;
 
 import java.util.List;
 
@@ -6,19 +6,19 @@ import org.apache.log4j.Logger;
 
 import com.github.q9029.aikatsustars.repository.dto.BrandDto;
 
-public class BrandsUtil {
+public class BrandsCachedData {
 
-	private static final Logger LOG = Logger.getLogger(BrandsUtil.class);
+	private static final Logger LOG = Logger.getLogger(BrandsCachedData.class);
 
 	private static List<BrandDto> brandDtoList;
 
-	private BrandsUtil() {}
+	private BrandsCachedData() {}
 
-	public static List<BrandDto> getList() {
+	public static List<BrandDto> getCachedList() {
 		return brandDtoList;
 	}
 
-	public static void reload(List<BrandDto> updatedList) {
+	public static void cache(List<BrandDto> updatedList) {
 		synchronized (brandDtoList) {
 			try {
 				LOG.info("ブランド設定のリロードを開始します。");

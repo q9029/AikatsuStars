@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.github.q9029.aikatsustars.repository.SystemSettingsDao;
 import com.github.q9029.aikatsustars.service.SystemSettingsService;
-import com.github.q9029.aikatsustars.service.util.SystemSettingsUtil;
+import com.github.q9029.aikatsustars.service.cache.SystemSettingsCachedData;
 
 @Service
 public class SystemSettingsServiceImpl implements SystemSettingsService {
@@ -14,7 +14,7 @@ public class SystemSettingsServiceImpl implements SystemSettingsService {
 	private SystemSettingsDao systemSettingsDao;
 
 	@Override
-	public void reload() {
-		SystemSettingsUtil.reload(systemSettingsDao.loadAll());
+	public void cacheRepositoryData() {
+		SystemSettingsCachedData.cache(systemSettingsDao.loadAll());
 	}
 }

@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.handler;
+package com.github.q9029.aikatsustars.resolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +14,7 @@ import com.github.q9029.aikatsustars.controller.CallbackController;
 import com.github.q9029.aikatsustars.controller.constant.View;
 
 @Component
-public class GlobalExceptionHandler implements HandlerExceptionResolver {
+public class SystemExceptionResolver implements HandlerExceptionResolver {
 
 	private static final Logger LOG = Logger.getLogger(CallbackController.class);
 

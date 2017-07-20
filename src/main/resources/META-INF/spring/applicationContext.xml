@@ -31,7 +31,7 @@
 	</beans:bean>
 
 	<!-- Properties -->
-	<!--
+	<!-- プロパティは作成せず、環境変数もしくはDBから取得する
 	<beans:bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
 		<beans:property name="locations">
 			<beans:list>
@@ -83,7 +83,9 @@
 			<beans:props>
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
+				<!-- 必要な設定か検証する
 				<beans:prop key="hibernate.query.substitutions">true 1, false 0</beans:prop>
+				-->
 			</beans:props>
 		</beans:property>
 	</beans:bean>

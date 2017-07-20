@@ -1,4 +1,4 @@
-package com.github.q9029.aikatsustars.service.util;
+package com.github.q9029.aikatsustars.service.cache;
 
 import java.util.List;
 
@@ -6,19 +6,19 @@ import org.apache.log4j.Logger;
 
 import com.github.q9029.aikatsustars.repository.dto.VolumeDto;
 
-public class VolumesUtil {
+public class VolumesCachedData {
 
-	private static final Logger LOG = Logger.getLogger(VolumesUtil.class);
+	private static final Logger LOG = Logger.getLogger(VolumesCachedData.class);
 
 	private static List<VolumeDto> volumeDtoList;
 
-	private VolumesUtil() {}
+	private VolumesCachedData() {}
 
-	public static List<VolumeDto> getList() {
+	public static List<VolumeDto> getCachedList() {
 		return volumeDtoList;
 	}
 
-	public static void reload(List<VolumeDto> updatedList) {
+	public static void cache(List<VolumeDto> updatedList) {
 		synchronized (volumeDtoList) {
 			try {
 				LOG.info("弾設定のリロードを開始します。");
