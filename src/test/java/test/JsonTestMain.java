@@ -9,7 +9,6 @@ public class JsonTestMain {
 
 	public static void main(String[] args) {
 
-
 		Map<String, Object> cardInfoMap = new LinkedHashMap<>();
 		cardInfoMap.put("id", 1);
 		cardInfoMap.put("no", "PR 1-1-1");
