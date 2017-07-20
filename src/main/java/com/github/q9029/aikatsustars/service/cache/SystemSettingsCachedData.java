@@ -12,11 +12,11 @@ public class SystemSettingsCachedData {
 
 	private static final Logger LOG = Logger.getLogger(SystemSettingsCachedData.class);
 
-	private static final Map<String, String> systemSettingMap = new HashMap<>();
+	private static final Map<String, SystemSettingDto> systemSettingMap = new HashMap<>();
 
 	private SystemSettingsCachedData() {}
 
-	public static String getCachedValue(String key) {
+	public static SystemSettingDto get(String key) {
 		return systemSettingMap.get(key);
 	}
 
@@ -26,7 +26,7 @@ public class SystemSettingsCachedData {
 				LOG.info("システム設定のリロードを開始します。");
 				systemSettingMap.clear();
 				for (SystemSettingDto dto : updatedList) {
-					systemSettingMap.put(dto.getKey(), dto.getValue());
+					systemSettingMap.put(dto.getKey(), dto);
 				}
 				LOG.info("システム設定のリロードを終了しました。");
 			} catch (Exception e) {
