@@ -10,16 +10,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
 
+import com.github.q9029.aikatsustars.controller.constant.RequestKey;
 import com.github.q9029.aikatsustars.controller.constant.RequestURI;
 import com.github.q9029.aikatsustars.repository.dto.CardDto;
 import com.github.q9029.aikatsustars.service.CardsService;
 
 import net.arnx.jsonic.JSON;
+import net.arnx.jsonic.JSONException;
 
 @RestController
 @RequestMapping(value = RequestURI.CARD, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -31,24 +33,32 @@ public class CardController {
 	private CardsService cardsService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<String> doGet(@ModelAttribute Integer cardId) {
+	public ResponseEntity<String> doGet(WebRequest request) {
 
-		CardDto cardDto = cardsService.getCard(cardId);
+		String cardId = request.getParameter(RequestKey.Parameter.CARD_ID);
+		try {
+			CardDto cardDto = cardsService.getCard(Integer.parseInt(cardId));
 
-		Map<String, Object> cardInfoMap = new LinkedHashMap<>();
-		cardInfoMap.put("no", cardDto.getNo());
-		cardInfoMap.put("name", cardDto.getName());
-		cardInfoMap.put("type", "クール");
-		cardInfoMap.put("brand", "スパイスコード");
-		cardInfoMap.put("rarerity", "SPR");
-		cardInfoMap.put("volume", "星のツバサ1弾");
-		cardInfoMap.put("img_url", cardDto.getUrl());
+			Map<String, Object> cardInfoMap = new LinkedHashMap<>();
+			cardInfoMap.put("no", cardDto.getNo());
+			cardInfoMap.put("name", cardDto.getName());
+			cardInfoMap.put("type", "クール");
+			cardInfoMap.put("brand", "スパイスコード");
+			cardInfoMap.put("rarerity", "SPR");
+			cardInfoMap.put("volume", "星のツバサ1弾");
+			cardInfoMap.put("img_url", cardDto.getUrl());
 
-		String json = JSON.encode(cardInfoMap);
+			String json = JSON.encode(cardInfoMap);
 
-		HttpHeaders headers = new HttpHeaders();
-		headers.add("Connection", "close");
-		return new ResponseEntity<>(json, headers, HttpStatus.OK);
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Connection", "close");
+
+			ResponseEntity<String> response = new ResponseEntity<>(json, headers, HttpStatus.OK);
+			return response;
+
+		} catch (NumberFormatException | JSONException e) {
+			throw new RuntimeException("カード取得で例外が発生しました。card_id=" + cardId, e);
+		}
 	}
 
 	@ExceptionHandler

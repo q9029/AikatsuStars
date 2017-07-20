@@ -20,5 +20,6 @@ public class RequestKey {
 		public static final String CATEGORY = "category";
 		public static final String BRAND = "brand";
 		public static final String RARITY = "rarity";
+		public static final String CARD_ID = "card_id";
 	}
 }
