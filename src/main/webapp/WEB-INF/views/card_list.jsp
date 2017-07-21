@@ -78,7 +78,7 @@
 				<c:forEach var="card" items="${requestScope.cardlist}" >
 					<div class="col-sm-1 col-xs-3">
 						<div class="thumbnail">
-							<img src="https://q9029.github.io/aikatsustars/card<c:out value="${card.url}"/>"/>
+							<img src="https://q9029.github.io/starstrade/card<c:out value="${card.url}"/>"/>
 							<div class="caption"><c:out value="${card.no}"/></div>
 						</div>
 					</div>

@@ -6,7 +6,7 @@
 			<div class="row">
 				<div class="col-xs-4">
 					<div class="thumbnail">
-						<img src="https://q9029.github.io/aikatsustars/card<c:out value="${card.img_url}"/>"/>
+						<img src="https://q9029.github.io/starstrade/card<c:out value="${card.img_url}"/>"/>
 					</div>
 				</div>
 				<div class="col-xs-8">
