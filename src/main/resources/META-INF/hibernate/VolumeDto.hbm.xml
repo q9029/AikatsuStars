@@ -12,9 +12,11 @@
 		<property name="name">
 			<column name="name"/>
 		</property>
+		<!--
 		<property name="displayOrder">
 			<column name="display_order"/>
 		</property>
+		-->
 		<property name="valid">
 			<column name="valid"/>
 		</property>
@@ -31,10 +33,12 @@
 			from
 				VolumeDto v
 			where
-				v.valid = ture
-			order by
-				v.displayOrder
+				v.valid = true
 		]]>
 	</query>
+	<!--
+			order by
+				v.displayOrder
+	-->
 
 </hibernate-mapping>

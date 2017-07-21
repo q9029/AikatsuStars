@@ -12,6 +12,10 @@ public class NamedQuery {
 		public static final String loadAll = "CardsDao.loadAll";
 	}
 
+	public class Brand {
+		public static final String loadAll = "BrandsDao.loadAll";
+	}
+
 	public class Volume {
 		public static final String loadAll = "VolumesDao.loadAll";
 	}

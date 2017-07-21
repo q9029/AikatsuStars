@@ -40,7 +40,7 @@
 			from
 				AccountDto a
 			where
-				a.valid = ture
+				a.valid = true
 		]]>
 	</query>
 	<query name="AccountsDao.findById">

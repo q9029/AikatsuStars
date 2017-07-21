@@ -31,7 +31,7 @@
 			from
 				BrandDto b
 			where
-				b.valid = ture
+				b.valid = true
 			order by
 				b.displayOrder
 		]]>
