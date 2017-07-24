@@ -3,9 +3,8 @@
 <c:import url="/WEB-INF/views/layout/layout.jsp">
 	<c:param name="content">
 		<div class="container">
-			<h1 class="h3">404 Not Found.</h1>
-			<h2 class="h4"><small>お探しのページが見つかりませんでした。</small></h2>
-			<img class="img-responsive" alt="404 Not Found" src="<c:url value='/img/notfound.png'/>"/>
+			<h1 class="h3">503 SERVICE UNAVAILABLE</h1>
+			<img class="img-responsive" alt="503 SERVICE UNAVAILABLE" src="<c:url value='/img/503.png'/>"/>
 		</div>
 	</c:param>
 </c:import>

@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.service.AccountsService;
 
 @RestController
-@RequestMapping(value = RequestURI.Job.CLEAN_ACCOUNTS)
+@RequestMapping(value = RequestUri.Job.CLEAN_ACCOUNTS)
 public class JobCleanController {
 
 	private static final Logger LOG = Logger.getLogger(JobCleanController.class);

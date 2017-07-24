@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.service.SystemSettingsService;
 
 @RestController
-@RequestMapping(value = RequestURI.Job.Reload.SYSTEM_SETTINGS)
+@RequestMapping(value = RequestUri.Job.Reload.SYSTEM_SETTINGS)
 public class JobReloadController {
 
 	private static final Logger LOG = Logger.getLogger(JobCleanController.class);

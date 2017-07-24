@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 
 @RestController
-@RequestMapping(value = RequestURI.Job.HEALTHCHECK)
+@RequestMapping(value = RequestUri.Job.HEALTHCHECK)
 public class JobHealthCheckController {
 
 	private static final Logger LOG = Logger.getLogger(JobHealthCheckController.class);

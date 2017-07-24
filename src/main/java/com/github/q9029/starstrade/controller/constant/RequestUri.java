@@ -1,8 +1,8 @@
 package com.github.q9029.starstrade.controller.constant;
 
-public class RequestURI {
+public class RequestUri {
 
-	private RequestURI() {}
+	private RequestUri() {}
 
 	public static final String INDEX = "/";
 	public static final String SIGNIN = "/signin";
@@ -13,7 +13,8 @@ public class RequestURI {
 	public static final String SEARCH = "/search";
 	public static final String PRIVACYPOLICY = "/privacypolicy";
 	public static final String TERMS = "/terms";
-	public static final String NOTFOUND = "/notfound";
+	public static final String E404 = "/E404";
+	public static final String E503 = "/E503";
 
 	public class Job {
 

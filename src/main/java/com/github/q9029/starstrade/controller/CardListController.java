@@ -9,14 +9,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.controller.constant.View;
 import com.github.q9029.starstrade.service.CardsService;
 
 import twitter4j.TwitterException;
 
 @Controller
-@RequestMapping(value = RequestURI.CARDLIST)
+@RequestMapping(value = RequestUri.CARDLIST)
 public class CardListController {
 
 	@Autowired

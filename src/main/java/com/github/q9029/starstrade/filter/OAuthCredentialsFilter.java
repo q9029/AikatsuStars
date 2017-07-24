@@ -14,7 +14,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestKey;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.controller.constant.SessionKey;
 
 import twitter4j.Twitter;
@@ -26,19 +27,21 @@ public class OAuthCredentialsFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
+		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = null;
 		try {
-			session = ((HttpServletRequest) request).getSession();
+			session = req.getSession();
 			Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
 			twitter.verifyCredentials();
-			chain.doFilter(request, response);
+			chain.doFilter(req, response);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
 			if (session != null) {
 				session.invalidate();
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher(RequestURI.NOTFOUND);
-			dispatcher.forward(request, response);
+			req.setAttribute(RequestKey.Attribute.REDIRECT_URI, req.getContextPath());
+			RequestDispatcher dispatcher = req.getRequestDispatcher(RequestUri.SIGNIN);
+			dispatcher.forward(req, response);
 		}
 	}
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import com.github.q9029.starstrade.controller.constant.RequestKey;
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.repository.dto.CardDto;
 import com.github.q9029.starstrade.service.CardsService;
 
@@ -24,7 +24,7 @@ import net.arnx.jsonic.JSON;
 import net.arnx.jsonic.JSONException;
 
 @RestController
-@RequestMapping(value = RequestURI.CARD, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = RequestUri.CARD, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class CardController {
 
 	private static final Logger LOG = Logger.getLogger(CardController.class);

@@ -28,7 +28,7 @@ public class SystemExceptionResolver implements HandlerExceptionResolver {
 			session.invalidate();
 		}
 
-		ModelAndView modelAndView = new ModelAndView(View.NOT_FOUND);
+		ModelAndView modelAndView = new ModelAndView(View.E404);
 		modelAndView.setStatus(HttpStatus.NOT_FOUND);
 		return modelAndView;
 	}

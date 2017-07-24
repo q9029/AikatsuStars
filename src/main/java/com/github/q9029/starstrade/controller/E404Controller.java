@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.controller.constant.View;
 
 @Controller
-@RequestMapping(value = RequestURI.NOTFOUND)
-public class NotFoundController {
+@RequestMapping(value = RequestUri.E404)
+public class E404Controller {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView doGet() {
-		ModelAndView modelAndView = new ModelAndView(View.NOT_FOUND);
+		ModelAndView modelAndView = new ModelAndView(View.E404);
 		modelAndView.setStatus(HttpStatus.NOT_FOUND);
 		return modelAndView;
 	}

@@ -16,6 +16,9 @@ public class View {
 	/** /WEB-INF/views/list.jsp */
 	public static final String LIST = "list";
 
-	/** /WEB-INF/views/not_found.jsp */
-	public static final String NOT_FOUND = "not_found";
+	/** /WEB-INF/views/E404.jsp */
+	public static final String E404 = "E404";
+
+	/** /WEB-INF/views/E503.jsp */
+	public static final String E503 = "E503";
 }

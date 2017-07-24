@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.WebRequest;
 
 import com.github.q9029.starstrade.controller.constant.RequestKey;
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.controller.constant.SessionKey;
 import com.github.q9029.starstrade.repository.dto.AccountDto;
 import com.github.q9029.starstrade.service.AccountsService;
@@ -20,7 +20,7 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
 @Controller
-@RequestMapping(RequestURI.CALLBACK)
+@RequestMapping(RequestUri.CALLBACK)
 public class CallbackController {
 
 	@Autowired
@@ -73,6 +73,9 @@ public class CallbackController {
 		} finally {
 			request.removeAttribute(SessionKey.REQUEST_TOKEN, WebRequest.SCOPE_SESSION);
 		}
-		return "redirect:/";
+
+		Object redirectUri = request.getAttribute(RequestKey.Attribute.REDIRECT_URI, WebRequest.SCOPE_REQUEST);
+		request.removeAttribute(RequestKey.Attribute.REDIRECT_URI, WebRequest.SCOPE_REQUEST);
+		return "redirect:".concat(redirectUri != null ? "/" : (String) redirectUri);
 	}
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import com.github.q9029.starstrade.controller.constant.RequestURI;
+import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.controller.constant.SessionKey;
 import com.github.q9029.starstrade.repository.dto.AccountDto;
 
@@ -31,8 +31,8 @@ public class AdminFilter implements Filter {
 			session = req.getSession();
 			String requestUri = req.getRequestURI();
 			AccountDto dto = (AccountDto) session.getAttribute(SessionKey.ACCOUNT);
-			if (!RequestURI.Job.HEALTHCHECK.equals(requestUri) && !Boolean.TRUE.equals(dto.getAdministrative())) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/error");
+			if (!RequestUri.Job.HEALTHCHECK.equals(requestUri) && !Boolean.TRUE.equals(dto.getAdministrative())) {
+				RequestDispatcher dispatcher = request.getRequestDispatcher(RequestUri.E404);
 				dispatcher.forward(request, response);
 			} else {
 				chain.doFilter(request, response);
@@ -42,7 +42,7 @@ public class AdminFilter implements Filter {
 			if (session != null) {
 				session.invalidate();
 			}
-			RequestDispatcher dispatcher = request.getRequestDispatcher(RequestURI.NOTFOUND);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(RequestUri.E404);
 			dispatcher.forward(request, response);
 		}
 	}

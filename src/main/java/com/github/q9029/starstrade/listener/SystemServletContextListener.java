@@ -5,9 +5,6 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.log4j.LogManager;
 
-/*
- * Herokuだといらない...
- */
 public class SystemServletContextListener implements ServletContextListener {
 
 	@Override

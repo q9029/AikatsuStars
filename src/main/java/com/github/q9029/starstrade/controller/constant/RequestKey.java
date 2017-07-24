@@ -5,6 +5,7 @@ public class RequestKey {
 	private RequestKey() {}
 
 	public class Attribute {
+		public static final String REDIRECT_URI = "redirectUri";
 		public static final String VOLUME_LIST = "volumeList";
 		public static final String TYPE_LIST = "typeList";
 		public static final String CATEGORY_LIST = "categoryList";
