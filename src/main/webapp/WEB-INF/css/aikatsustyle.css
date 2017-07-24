@@ -28,6 +28,8 @@ a {
 }
 .contents {
 	padding-top: 10px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 .contents > .container {
 	margin-bottom: 20px;
@@ -93,6 +95,8 @@ img {
 /* フッター */
 footer {
 	margin-bottom: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 hr {
 	margin-top: 0px;
