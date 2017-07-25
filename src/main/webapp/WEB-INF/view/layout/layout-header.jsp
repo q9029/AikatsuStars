@@ -22,7 +22,7 @@
 						<li><a class="navbar-link" href="<c:url value='/cardlist'/>">カードリスト</a></li>
 						<li><a class="navbar-link" href="<c:url value='/search'/>">募集検索</a></li>
 						<li>
-							<a class="navbar-link" href="<c:url value='/<c:out value='${sessionScope.account.name}'/>'/>">
+							<a class="navbar-link" href="/<c:out value='${sessionScope.account.name}'/>'">
 								<c:out value='${sessionScope.account.name}'/>
 							</a>
 						</li>

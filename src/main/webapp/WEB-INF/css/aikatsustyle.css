@@ -95,6 +95,12 @@ img {
 /* フッター */
 footer {
 	margin-bottom: 20px;
+}
+.footer{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.footer-contents {
 	padding-left: 5px;
 	padding-right: 5px;
 }
@@ -102,6 +108,27 @@ hr {
 	margin-top: 0px;
 	margin-bottom: 10px;
 }
+
+/* アラート */
+.alert {
+	margin-bottom: 0px;
+}
+
+/* 検索フォーム */
+.btn-accordion {
+	width: 100%;
+}
+.form-horizontal {
+	width: 95%;
+}
+.btn-search {
+	width: 100%;
+	margin-top: 5px;
+}
+.form-btn {
+	margin-bottom: 0px;
+}
+
 
 /* 更新情報 */
 .ellipsis {

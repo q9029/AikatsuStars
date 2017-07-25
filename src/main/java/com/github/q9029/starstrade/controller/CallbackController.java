@@ -76,6 +76,6 @@ public class CallbackController {
 
 		Object redirectUri = request.getAttribute(RequestKey.Attribute.REDIRECT_URI, WebRequest.SCOPE_REQUEST);
 		request.removeAttribute(RequestKey.Attribute.REDIRECT_URI, WebRequest.SCOPE_REQUEST);
-		return "redirect:".concat(redirectUri != null ? "/" : (String) redirectUri);
+		return "redirect:".concat(redirectUri != null ? (String) redirectUri : "/");
 	}
 }

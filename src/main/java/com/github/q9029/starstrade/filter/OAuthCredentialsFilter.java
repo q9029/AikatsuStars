@@ -17,8 +17,9 @@ import org.apache.log4j.Logger;
 import com.github.q9029.starstrade.controller.constant.RequestKey;
 import com.github.q9029.starstrade.controller.constant.RequestUri;
 import com.github.q9029.starstrade.controller.constant.SessionKey;
-
-import twitter4j.Twitter;
+import com.github.q9029.starstrade.repository.dto.AccountDto;
+import com.github.q9029.starstrade.service.TwitterService;
+import com.github.q9029.starstrade.util.ApplicationContextUtil;
 
 public class OAuthCredentialsFilter implements Filter {
 
@@ -31,8 +32,9 @@ public class OAuthCredentialsFilter implements Filter {
 		HttpSession session = null;
 		try {
 			session = req.getSession();
-			Twitter twitter = (Twitter) session.getAttribute(SessionKey.ACCOUNT);
-			twitter.verifyCredentials();
+			AccountDto account = (AccountDto) session.getAttribute(SessionKey.ACCOUNT);
+			TwitterService service = ApplicationContextUtil.getComponent(TwitterService.class);
+			service.verify(account);
 			chain.doFilter(req, response);
 		} catch (Exception e) {
 			LOG.error(e.getMessage(), e);
