@@ -28,11 +28,10 @@ public class CardListController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String doGet(WebRequest request, HttpSession session) throws TwitterException {
 
-		String name = request.getParameter("name");
-
-		String category = request.getParameter("category");
-		String brand = request.getParameter("brand");
-		String rareriry = request.getParameter("rareriry");
+//		String name = request.getParameter("name");
+//		String category = request.getParameter("category");
+//		String brand = request.getParameter("brand");
+//		String rareriry = request.getParameter("rareriry");
 
 		String volume = request.getParameter("volume");
 		if (StringUtils.isEmpty(volume)) {

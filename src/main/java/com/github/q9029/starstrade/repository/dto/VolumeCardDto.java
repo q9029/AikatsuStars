@@ -7,6 +7,7 @@ public class VolumeCardDto {
 	private Long id;
 	private Long volumeId;
 	private Long cardId;
+	private Boolean valid;
 	private Timestamp createdAt;
 	private Timestamp modifiedAt;
 
@@ -27,6 +28,12 @@ public class VolumeCardDto {
 	}
 	public void setCardId(Long cardId) {
 		this.cardId = cardId;
+	}
+	public Boolean getValid() {
+		return valid;
+	}
+	public void setValid(Boolean valid) {
+		this.valid = valid;
 	}
 	public Timestamp getCreatedAt() {
 		return createdAt;

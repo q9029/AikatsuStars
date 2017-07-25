@@ -5,18 +5,16 @@
 
 <hibernate-mapping package="com.github.q9029.starstrade.repository.dto">
 
-	<class name="VolumeDto" table="volumes">
+	<class name="VolumeCardDto" table="volumes_cards">
 		<id name="id">
 			<column name="id"/>
 		</id>
-		<property name="name">
-			<column name="name"/>
+		<property name="volumeId">
+			<column name="volume_id"/>
 		</property>
-		<!--
-		<property name="displayOrder">
-			<column name="display_order"/>
+		<property name="cardId">
+			<column name="card_id"/>
 		</property>
-		-->
 		<property name="valid">
 			<column name="valid"/>
 		</property>
@@ -28,12 +26,16 @@
 		</property>
 	</class>
 
-	<query name="VolumesDao.loadAll">
+	<query name="VolumeCardsDao.loadAll">
 		<![CDATA[
 			from
-				VolumeDto v
+				VolumeCardDto v, CardDto c
 			where
+				v.cardId = c.id
+			and
 				v.valid = true
+			and
+				v.volumeId = :volumeId
 		]]>
 	</query>
 	<!--

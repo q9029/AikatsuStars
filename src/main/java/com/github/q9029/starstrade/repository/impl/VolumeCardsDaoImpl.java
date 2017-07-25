@@ -29,6 +29,19 @@ public class VolumeCardsDaoImpl implements VolumeCardsDao {
 	}
 
 	@Override
+	public List<VolumeCardDto> loadCardsByVolumeId(int volumeId) {
+		// セッションの取得
+		Session session = sessionFactory.getCurrentSession();
+
+		// クエリの取得
+		Query<VolumeCardDto> query = session.createNamedQuery(NamedQuery.VolumeCard.loadAll, VolumeCardDto.class);
+		query.setParameter("volumeId", volumeId);
+
+		// クエリ実行
+		return query.list();
+	}
+
+	@Override
 	public Serializable save(VolumeCardDto volumeCard) {
 		// セッションの取得
 		Session session = sessionFactory.getCurrentSession();

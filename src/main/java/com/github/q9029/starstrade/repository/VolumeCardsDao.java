@@ -9,6 +9,8 @@ public interface VolumeCardsDao {
 
 	VolumeCardDto load(long id);
 
+	List<VolumeCardDto> loadCardsByVolumeId(int volumeId);
+
 	Serializable save(VolumeCardDto account);
 
 	void delete(VolumeCardDto account);
