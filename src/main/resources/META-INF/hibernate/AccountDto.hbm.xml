@@ -21,11 +21,20 @@
 		<property name="accessTokenSecret">
 			<column name="access_token_secret"/>
 		</property>
-		<property name="valid">
-			<column name="valid"/>
+		<property name="message">
+			<column name="message"/>
+		</property>
+		<property name="goodEstimateCount">
+			<column name="good_estimate_count"/>
+		</property>
+		<property name="badEstimateCount">
+			<column name="bad_estimate_count"/>
 		</property>
 		<property name="administrative">
 			<column name="administrative"/>
+		</property>
+		<property name="valid">
+			<column name="valid"/>
 		</property>
 		<property name="createdAt">
 			<column name="created_at"/>

@@ -15,6 +15,9 @@
 		<property name="cardId">
 			<column name="card_id"/>
 		</property>
+		<property name="displayOrder">
+			<column name="display_order"/>
+		</property>
 		<property name="valid">
 			<column name="valid"/>
 		</property>

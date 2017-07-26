@@ -9,17 +9,20 @@
 		<id name="id">
 			<column name="id"/>
 		</id>
+		<id name="brandId">
+			<column name="brand_id"/>
+		</id>
 		<property name="no">
 			<column name="no"/>
 		</property>
 		<property name="name">
 			<column name="name"/>
 		</property>
+		<property name="rarerity">
+			<column name="rarerity"/>
+		</property>
 		<property name="url">
 			<column name="url"/>
-		</property>
-		<property name="rareType">
-			<column name="rare_type"/>
 		</property>
 		<property name="valid">
 			<column name="valid"/>
