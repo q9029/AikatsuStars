@@ -5,24 +5,27 @@
 
 <hibernate-mapping package="com.github.q9029.starstrade.repository.dto">
 
-	<class name="CardDto" table="cards">
+	<class name="ListDto" table="lists">
 		<id name="id">
 			<column name="id"/>
 		</id>
-		<property name="brandId">
-			<column name="brand_id"/>
+		<property name="accountId">
+			<column name="account_id"/>
 		</property>
-		<property name="no">
-			<column name="no"/>
+		<property name="type">
+			<column name="type"/>
 		</property>
 		<property name="name">
 			<column name="name"/>
 		</property>
-		<property name="rarity">
-			<column name="rarity"/>
+		<property name="message">
+			<column name="message"/>
 		</property>
-		<property name="url">
-			<column name="url"/>
+		<property name="displayOrder">
+			<column name="display_order"/>
+		</property>
+		<property name="public">
+			<column name="public"/>
 		</property>
 		<property name="valid">
 			<column name="valid"/>
@@ -35,20 +38,12 @@
 		</property>
 	</class>
 
-	<query name="CardsDao.loadAll">
+	<query name="VolumeCardsDao.loadAll">
 		<![CDATA[
 			from
-				CardDto c
+				ListCardDto l
 			where
-				c.valid = true
-		]]>
-	</query>
-	<query name="CardsDao.findById">
-		<![CDATA[
-			from
-				CardDto c
-			where
-				c.id = :id
+				l.valid = true
 		]]>
 	</query>
 

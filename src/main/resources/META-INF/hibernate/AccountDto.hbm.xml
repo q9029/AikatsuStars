@@ -21,6 +21,9 @@
 		<property name="accessTokenSecret">
 			<column name="access_token_secret"/>
 		</property>
+		<property name="currentlySignedInAt">
+			<column name="currently_signed_in_at"/>
+		</property>
 		<property name="message">
 			<column name="message"/>
 		</property>

@@ -5,24 +5,15 @@
 
 <hibernate-mapping package="com.github.q9029.starstrade.repository.dto">
 
-	<class name="CardDto" table="cards">
+	<class name="NotificationDto" table="notifications">
 		<id name="id">
 			<column name="id"/>
 		</id>
-		<property name="brandId">
-			<column name="brand_id"/>
+		<property name="title">
+			<column name="title"/>
 		</property>
-		<property name="no">
-			<column name="no"/>
-		</property>
-		<property name="name">
-			<column name="name"/>
-		</property>
-		<property name="rarity">
-			<column name="rarity"/>
-		</property>
-		<property name="url">
-			<column name="url"/>
+		<property name="body">
+			<column name="body"/>
 		</property>
 		<property name="valid">
 			<column name="valid"/>
@@ -35,20 +26,20 @@
 		</property>
 	</class>
 
-	<query name="CardsDao.loadAll">
+	<query name="NotificationsDao.loadAll">
 		<![CDATA[
 			from
-				CardDto c
+				NotificationDto n
 			where
-				c.valid = true
+				n.valid = true
 		]]>
 	</query>
-	<query name="CardsDao.findById">
+	<query name="NotificationsDao.findById">
 		<![CDATA[
 			from
-				CardDto c
+				NotificationDto n
 			where
-				c.id = :id
+				n.id = :id
 		]]>
 	</query>
 
