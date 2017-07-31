@@ -4,7 +4,7 @@
 	<c:param name="content">
 		<div class="container">
 			<h1 class="h3">503 SERVICE UNAVAILABLE</h1>
-			<img class="img-responsive" alt="503 SERVICE UNAVAILABLE" src="<c:url value='/img/503.png'/>"/>
+			<img class="img-responsive" alt="503 SERVICE UNAVAILABLE" src="<c:url value='/img/E503.png'/>"/>
 		</div>
 	</c:param>
 </c:import>

@@ -21,27 +21,18 @@
 	<context:property-placeholder/>
 
 	<mvc:annotation-driven/>
+	<mvc:resources mapping="/favicon.ico" location="/WEB-INF/favicon.ico"/>
+	<!-- ｺｺｶﾗ 外部リソース化予定 -->
 	<mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
-	<mvc:resources mapping="/img/**" location="/WEB-INF/img/"/>
 	<mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+	<mvc:resources mapping="/img/**" location="/WEB-INF/img/"/>
+	<!-- ｺｺﾏﾃﾞ 外部リソース化予定 -->
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/view/"/>
 		<beans:property name="suffix" value=".jsp"/>
 	</beans:bean>
 
-	<!-- Properties -->
-	<!-- プロパティは作成せず、環境変数もしくはDBから取得する
-	<beans:bean id="properties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-		<beans:property name="locations">
-			<beans:list>
-				<beans:value>classpath:app.properties</beans:value>
-			</beans:list>
-		</beans:property>
-	</beans:bean>
-	-->
-
-	<!-- DatabaseAccess -->
 	<beans:bean id="databaseUrl" class="java.net.URI">
 		<beans:constructor-arg value="${DATABASE_URL}"/>
 	</beans:bean>
@@ -50,14 +41,13 @@
 		<beans:property name="url" value="#{'jdbc:postgresql://' + @databaseUrl.getHost() + ':' + @databaseUrl.getPort() + @databaseUrl.getPath()}"/>
 		<beans:property name="username" value="#{@databaseUrl.getUserInfo().split(':')[0]}"/>
 		<beans:property name="password" value="#{@databaseUrl.getUserInfo().split(':')[1]}"/>
-		<beans:property name="initialSize" value="5"/>
+		<beans:property name="initialSize" value="15"/>
 		<beans:property name="maxTotal" value="20"/>
-		<beans:property name="maxIdle" value="5"/>
+		<beans:property name="maxIdle" value="15"/>
 		<beans:property name="maxWaitMillis" value="1000"/>
 		<beans:property name="validationQuery" value="SELECT 1"/>
 	</beans:bean>
 
-	<!-- TransactionManager -->
 	<aop:aspectj-autoproxy/>
 	<beans:bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<beans:property name="sessionFactory" ref="sessionFactory"/>
@@ -76,21 +66,17 @@
 		<beans:property name="dataSource" ref="dataSource"/>
 		<beans:property name="mappingLocations">
 			<beans:list>
-				<beans:value>classpath:META-INF/hibernate/*.hbm.xml</beans:value>
+				<beans:value>classpath:META-INF/hibernate/**/*.hbm.xml</beans:value>
 			</beans:list>
 		</beans:property>
 		<beans:property name="hibernateProperties">
 			<beans:props>
 				<beans:prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</beans:prop>
 				<beans:prop key="hibernate.show_sql">true</beans:prop>
-				<!-- 必要な設定か検証する
-				<beans:prop key="hibernate.query.substitutions">true 1, false 0</beans:prop>
-				-->
 			</beans:props>
 		</beans:property>
 	</beans:bean>
 
-	<!-- ProxyLogging -->
 	<aop:config>
 		<aop:aspect ref="procTimeProxy">
 			<aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.starstrade.controller.*.*(..))"/>
