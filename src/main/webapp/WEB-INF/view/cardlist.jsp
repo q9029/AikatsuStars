@@ -2,6 +2,28 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:import url="/WEB-INF/view/layout/layout.jsp">
 	<c:param name="content">
+		<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">SPR S2-1-1</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<img src="https://q9029.github.io/starstrade/card/391005/cp5-1-1-star_00.png"/>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn" data-toggle="modal" data-target="#cardModalLabel">
+			Launch demo modal
+		</button>
 		<div class="container">
 			<form class="form-horizontal" method="get" action="<c:url value='/cardlist'/>">
 				<button type="button" class="btn btn-info btn-sm btn-accordion" data-toggle="collapse" data-target="#additional-condition">＋条件を指定してカードを検索する</button>
