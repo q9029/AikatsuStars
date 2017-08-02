@@ -14,9 +14,9 @@ public class SystemHttpSessionListener implements HttpSessionListener {
 	public void sessionCreated(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
 		if (session != null) {
-			LOG.info("セッションが生成されました。id=" + session.getId());
+			LOG.info("Session is created. id=" + session.getId());
 		} else {
-			LOG.info("セッションが生成されました。id=null");
+			LOG.info("Session is created. id=null");
 		}
 	}
 
@@ -24,9 +24,9 @@ public class SystemHttpSessionListener implements HttpSessionListener {
 	public void sessionDestroyed(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
 		if (session != null) {
-			LOG.info("セッションが破棄されました。id=" + session.getId());
+			LOG.info("Session is destroyed. id=" + session.getId());
 		} else {
-			LOG.info("セッションが破棄されました。id=null");
+			LOG.info("Session is destroyed. id=null");
 		}
 	}
 }
