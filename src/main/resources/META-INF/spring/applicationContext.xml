@@ -22,11 +22,6 @@
 
 	<mvc:annotation-driven/>
 	<mvc:resources mapping="/favicon.ico" location="/WEB-INF/favicon.ico"/>
-	<!-- ｺｺｶﾗ 外部リソース化予定 -->
-	<mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
-	<mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
-	<mvc:resources mapping="/img/**" location="/WEB-INF/img/"/>
-	<!-- ｺｺﾏﾃﾞ 外部リソース化予定 -->
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/view/"/>
