@@ -35,7 +35,7 @@
 		</property>
 	</class>
 
-	<query name="VolumeCardsDao.loadAll">
+	<query name="ListsCardsDao.loadAll">
 		<![CDATA[
 			from
 				ListCardDto l

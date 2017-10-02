@@ -29,7 +29,7 @@
 		</property>
 	</class>
 
-	<query name="VolumeCardsDao.loadAll">
+	<query name="VolumesCardsDao.loadAll">
 		<![CDATA[
 			from
 				VolumeCardDto v
