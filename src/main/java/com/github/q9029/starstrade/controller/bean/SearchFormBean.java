@@ -4,19 +4,13 @@ import java.util.List;
 
 import com.github.q9029.starstrade.repository.dto.BrandDto;
 import com.github.q9029.starstrade.repository.dto.CardDto;
-import com.github.q9029.starstrade.repository.dto.CategoryDto;
-import com.github.q9029.starstrade.repository.dto.RarerityDto;
-import com.github.q9029.starstrade.repository.dto.TypeDto;
 import com.github.q9029.starstrade.repository.dto.VolumeDto;
 
 public class SearchFormBean {
 
 	// 値域
 	private List<VolumeDto> volumeList;
-	private List<TypeDto> typeList;
-	private List<CategoryDto> categoryList;
 	private List<BrandDto> brandList;
-	private List<RarerityDto> rarityList;
 
 	// 条件
 	private String keyword;
@@ -35,29 +29,11 @@ public class SearchFormBean {
 	public void setVolumeList(List<VolumeDto> volumeList) {
 		this.volumeList = volumeList;
 	}
-	public List<TypeDto> getTypeList() {
-		return typeList;
-	}
-	public void setTypeList(List<TypeDto> typeList) {
-		this.typeList = typeList;
-	}
-	public List<CategoryDto> getCategoryList() {
-		return categoryList;
-	}
-	public void setCategoryList(List<CategoryDto> categoryList) {
-		this.categoryList = categoryList;
-	}
 	public List<BrandDto> getBrandList() {
 		return brandList;
 	}
 	public void setBrandList(List<BrandDto> brandList) {
 		this.brandList = brandList;
-	}
-	public List<RarerityDto> getRarityList() {
-		return rarityList;
-	}
-	public void setRarityList(List<RarerityDto> rarityList) {
-		this.rarityList = rarityList;
 	}
 	public String getKeyword() {
 		return keyword;

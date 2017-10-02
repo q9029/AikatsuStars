@@ -9,8 +9,8 @@
 		<id name="id">
 			<column name="id"/>
 		</id>
-		<property name="title">
-			<column name="title"/>
+		<property name="head">
+			<column name="head"/>
 		</property>
 		<property name="body">
 			<column name="body"/>

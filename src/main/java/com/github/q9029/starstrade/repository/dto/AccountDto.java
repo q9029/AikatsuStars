@@ -9,8 +9,12 @@ public class AccountDto {
 	private String screenName;
 	private String accessToken;
 	private String accessTokenSecret;
-	private Boolean valid;
+	private Timestamp currentlySignedInAt;
+	private String message;
+	private Integer goodEstimateCount;
+	private Integer badEstimateCount;
 	private Boolean administrative;
+	private Boolean valid;
 	private Timestamp createdAt;
 	private Timestamp modifiedAt;
 
@@ -44,17 +48,41 @@ public class AccountDto {
 	public void setAccessTokenSecret(String accessTokenSecret) {
 		this.accessTokenSecret = accessTokenSecret;
 	}
-	public Boolean getValid() {
-		return valid;
+	public Timestamp getCurrentlySignedInAt() {
+		return currentlySignedInAt;
 	}
-	public void setValid(Boolean valid) {
-		this.valid = valid;
+	public void setCurrentlySignedInAt(Timestamp currentlySignedInAt) {
+		this.currentlySignedInAt = currentlySignedInAt;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Integer getGoodEstimateCount() {
+		return goodEstimateCount;
+	}
+	public void setGoodEstimateCount(Integer goodEstimateCount) {
+		this.goodEstimateCount = goodEstimateCount;
+	}
+	public Integer getBadEstimateCount() {
+		return badEstimateCount;
+	}
+	public void setBadEstimateCount(Integer badEstimateCount) {
+		this.badEstimateCount = badEstimateCount;
 	}
 	public Boolean getAdministrative() {
 		return administrative;
 	}
 	public void setAdministrative(Boolean administrative) {
 		this.administrative = administrative;
+	}
+	public Boolean getValid() {
+		return valid;
+	}
+	public void setValid(Boolean valid) {
+		this.valid = valid;
 	}
 	public Timestamp getCreatedAt() {
 		return createdAt;

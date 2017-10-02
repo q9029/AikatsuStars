@@ -82,7 +82,7 @@ type int,
 name varchar(50),
 message varchar(200),
 display_order int,
-public boolean,
+published boolean,
 valid boolean,
 created_at timestamp,
 modified_at timestamp

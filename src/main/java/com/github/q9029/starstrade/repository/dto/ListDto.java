@@ -2,14 +2,15 @@ package com.github.q9029.starstrade.repository.dto;
 
 import java.sql.Timestamp;
 
-public class CardDto {
+public class ListDto {
 
 	private Integer id;
-	private Integer brandId;
-	private String no;
+	private Long accountId;
+	private Integer type;
 	private String name;
-	private Integer rarity;
-	private String url;
+	private String message;
+	private Integer displayOrder;
+	private Boolean published;
 	private Boolean valid;
 	private Timestamp createdAt;
 	private Timestamp modifiedAt;
@@ -20,17 +21,17 @@ public class CardDto {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getBrandId() {
-		return brandId;
+	public Long getAccountId() {
+		return accountId;
 	}
-	public void setBrandId(Integer brandId) {
-		this.brandId = brandId;
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
-	public String getNo() {
-		return no;
+	public Integer getType() {
+		return type;
 	}
-	public void setNo(String no) {
-		this.no = no;
+	public void setType(Integer type) {
+		this.type = type;
 	}
 	public String getName() {
 		return name;
@@ -38,17 +39,23 @@ public class CardDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Integer getRarity() {
-		return rarity;
+	public String getMessage() {
+		return message;
 	}
-	public void setRarity(Integer rarity) {
-		this.rarity = rarity;
+	public void setMessage(String message) {
+		this.message = message;
 	}
-	public String getUrl() {
-		return url;
+	public Integer getDisplayOrder() {
+		return displayOrder;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setDisplayOrder(Integer displayOrder) {
+		this.displayOrder = displayOrder;
+	}
+	public Boolean getPublished() {
+		return published;
+	}
+	public void setPublished(Boolean published) {
+		this.published = published;
 	}
 	public Boolean getValid() {
 		return valid;

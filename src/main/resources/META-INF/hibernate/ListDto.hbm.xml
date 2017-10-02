@@ -24,8 +24,8 @@
 		<property name="displayOrder">
 			<column name="display_order"/>
 		</property>
-		<property name="public">
-			<column name="public"/>
+		<property name="published">
+			<column name="published"/>
 		</property>
 		<property name="valid">
 			<column name="valid"/>

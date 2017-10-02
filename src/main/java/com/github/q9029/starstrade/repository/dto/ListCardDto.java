@@ -2,11 +2,13 @@ package com.github.q9029.starstrade.repository.dto;
 
 import java.sql.Timestamp;
 
-public class VolumeCardDto {
+public class ListCardDto {
 
 	private Integer id;
-	private Integer volumeId;
+	private Integer listId;
 	private Integer cardId;
+	private String message;
+	private Integer quantity;
 	private Integer displayOrder;
 	private Boolean valid;
 	private Timestamp createdAt;
@@ -18,17 +20,29 @@ public class VolumeCardDto {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getVolumeId() {
-		return volumeId;
+	public Integer getListId() {
+		return listId;
 	}
-	public void setVolumeId(Integer volumeId) {
-		this.volumeId = volumeId;
+	public void setListId(Integer listId) {
+		this.listId = listId;
 	}
 	public Integer getCardId() {
 		return cardId;
 	}
 	public void setCardId(Integer cardId) {
 		this.cardId = cardId;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	public Integer getDisplayOrder() {
 		return displayOrder;

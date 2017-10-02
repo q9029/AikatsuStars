@@ -32,13 +32,9 @@
 	<query name="VolumeCardsDao.loadAll">
 		<![CDATA[
 			from
-				VolumeCardDto v, CardDto c
+				VolumeCardDto v
 			where
-				v.cardId = c.id
-			and
 				v.valid = true
-			and
-				v.volumeId = :volumeId
 		]]>
 	</query>
 	<!--
