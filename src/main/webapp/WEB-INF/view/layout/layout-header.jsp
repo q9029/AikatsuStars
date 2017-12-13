@@ -28,7 +28,7 @@
 						</li>
 						<li><a class="navbar-link" href="<c:url value='/signout'/>">ログアウト</a></li>
 					</c:if>
-					<li><a class="navbar-link" href="https://twitter.com/q9029">お問い合わせ</a></li>
+					<li><a class="navbar-link" href="https://twitter.com/intent/tweet?user_id=2434248589">お問い合わせ</a></li>
 				</ul>
 			</div>
 		</div>
