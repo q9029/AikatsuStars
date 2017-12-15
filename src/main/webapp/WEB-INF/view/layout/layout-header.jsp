@@ -10,23 +10,23 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value='/'/>">スタトレ</a>
+				<a class="navbar-brand" href="/">スタトレ</a>
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<c:if var='isAnonymous' test='${empty sessionScope.account}'>
-						<li><a class="navbar-link" href="<c:url value='/signin'/>">ログイン</a></li>
+						<li><a class="navbar-link" href="/signin">ログイン</a></li>
 					</c:if>
 					<c:if test='${!isAnonymous}'>
 						<li><a class="navbar-link">マイリスト</a></li>
-						<li><a class="navbar-link" href="<c:url value='/cardlist'/>">カードリスト</a></li>
-						<li><a class="navbar-link" href="<c:url value='/search'/>">募集検索</a></li>
+						<li><a class="navbar-link" href="/cardlist">カードリスト</a></li>
+						<li><a class="navbar-link" href="/search">募集検索</a></li>
 						<li>
 							<a class="navbar-link" href="/<c:out value='${sessionScope.account.name}'/>'">
 								<c:out value='${sessionScope.account.name}'/>
 							</a>
 						</li>
-						<li><a class="navbar-link" href="<c:url value='/signout'/>">ログアウト</a></li>
+						<li><a class="navbar-link" href="/signout">ログアウト</a></li>
 					</c:if>
 					<li><a class="navbar-link" href="https://twitter.com/intent/tweet?user_id=2434248589">お問い合わせ</a></li>
 				</ul>
