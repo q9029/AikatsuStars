@@ -1,5 +1,6 @@
 <%@page pageEncoding="UTF-8" contentType="text/html" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:import url="/WEB-INF/view/layout/layout.jsp">
 	<c:param name="content">
 		<div class="container">
@@ -14,10 +15,11 @@
 					<h3 class="panel-title">更新情報</h3>
 				</div>
 				<div class="panel-body">
-					<div class="ellipsis">2017-04-22 カード検索機能を追加しました。</div>
-					<div class="ellipsis">2017-04-22 マイリスト機能を追加しました。</div>
-					<div class="ellipsis">2017-03-20 星のツバサ1弾を追加しました。</div>
-					<div class="ellipsis">2017-03-01 サイトを開設しました。</div>
+					<c:forEach var="notification" items="${requestScope.notificationList}" >
+						<div class="ellipsis">
+							<fmt:formatDate value="${notification.createdAt}" pattern="yyyy-MM-dd HH:mm" /> <c:out value="${notification.head}"/>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</div>

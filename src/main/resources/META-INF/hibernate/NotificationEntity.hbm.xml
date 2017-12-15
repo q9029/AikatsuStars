@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping
+	PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="me.q9029.stars.repository.model">
+
+	<class name="NotificationEntity" table="notifications">
+		<id name="id">
+			<column name="id"/>
+		</id>
+		<property name="head">
+			<column name="head"/>
+		</property>
+		<property name="body">
+			<column name="body"/>
+		</property>
+		<property name="valid">
+			<column name="valid"/>
+		</property>
+		<property name="createdAt">
+			<column name="created_at"/>
+		</property>
+		<property name="modifiedAt">
+			<column name="modified_at"/>
+		</property>
+	</class>
+
+	<query name="NotificationsDao.selectAll">
+		<![CDATA[
+			from
+				NotificationEntity e
+			where
+				e.valid = true
+		]]>
+	</query>
+
+</hibernate-mapping>
