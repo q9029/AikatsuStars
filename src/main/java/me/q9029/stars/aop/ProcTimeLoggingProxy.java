@@ -7,7 +7,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.stereotype.Component;
 
 /**
- * 処理時間計測プロキシ.
+ * 処理時間ロギングプロキシ.
  * @author Queue
  */
 @Component

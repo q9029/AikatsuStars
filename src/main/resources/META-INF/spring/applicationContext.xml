@@ -16,12 +16,14 @@
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<context:component-scan base-package="com.github.q9029.starstrade"/>
+	<context:component-scan base-package="me.q9029.stars"/>
 	<context:annotation-config/>
 	<context:property-placeholder/>
 
 	<mvc:annotation-driven/>
+	<!-- faviconはApacheで返却するため不要
 	<mvc:resources mapping="/favicon.ico" location="/WEB-INF/favicon.ico"/>
+	-->
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/view/"/>
@@ -48,7 +50,7 @@
 		<beans:property name="sessionFactory" ref="sessionFactory"/>
 	</beans:bean>
 	<aop:config>
-		<aop:advisor pointcut="execution(* com.github.q9029.starstrade.service.*.*(..))" advice-ref="transactionAdvice"/>
+		<aop:advisor pointcut="execution(* me.q9029.stars.service.*.*(..))" advice-ref="transactionAdvice"/>
 	</aop:config>
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
@@ -73,20 +75,27 @@
 	</beans:bean>
 
 	<aop:config>
-		<aop:aspect ref="procTimeProxy">
-			<aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.starstrade.controller.*.*(..))"/>
-			<aop:around pointcut-ref="pointcutController" method="around"/>
+		<aop:aspect ref="procTimeLoggingProxy">
+			<aop:pointcut id="pointcutController" expression="execution(* me.q9029.stars.controller.*.*(..))"/>
+			<aop:around pointcut-ref="pointcutController" method="adviceAround"/>
+			<aop:pointcut id="pointcutService" expression="execution(* me.q9029.stars.service.*.*(..))"/>
+			<aop:around pointcut-ref="pointcutService" method="adviceAround"/>
+			<aop:pointcut id="pointcutDao" expression="execution(* me.q9029.stars.repository.*.*(..))"/>
+			<aop:around pointcut-ref="pointcutDao" method="adviceAround"/>
 		</aop:aspect>
-		<aop:aspect ref="loggingProxy">
-			<aop:pointcut id="pointcutController" expression="execution(* com.github.q9029.starstrade.controller.*.*(..))"/>
-			<aop:before pointcut-ref="pointcutController" method="before"/>
-			<aop:after pointcut-ref="pointcutController" method="after"/>
-			<aop:pointcut id="pointcutService" expression="execution(* com.github.q9029.starstrade.service.*.*(..))"/>
-			<aop:before pointcut-ref="pointcutService" method="before"/>
-			<aop:after pointcut-ref="pointcutService" method="after"/>
-			<aop:pointcut id="pointcutDao" expression="execution(* com.github.q9029.starstrade.repository.*.*(..))"/>
-			<aop:before pointcut-ref="pointcutDao" method="before"/>
-			<aop:after pointcut-ref="pointcutDao" method="after"/>
+		<aop:aspect ref="traceLoggingProxy">
+			<aop:pointcut id="pointcutController" expression="execution(* me.q9029.stars.controller.*.*(..))"/>
+			<aop:before pointcut-ref="pointcutController" method="adviceBefore"/>
+			<aop:after-returning pointcut-ref="pointcutController" method="adviceAfterReturning"/>
+			<aop:after-throwing pointcut-ref="pointcutController" method="adviceAfterThrowing"/>
+			<aop:pointcut id="pointcutService" expression="execution(* me.q9029.stars.service.*.*(..))"/>
+			<aop:before pointcut-ref="pointcutService" method="adviceBefore"/>
+			<aop:after-returning pointcut-ref="pointcutService" method="adviceAfterReturning"/>
+			<aop:after-throwing pointcut-ref="pointcutService" method="adviceAfterThrowing"/>
+			<aop:pointcut id="pointcutDao" expression="execution(* me.q9029.stars.repository.*.*(..))"/>
+			<aop:before pointcut-ref="pointcutDao" method="adviceBefore"/>
+			<aop:after-returning pointcut-ref="pointcutDao" method="adviceAfterReturning"/>
+			<aop:after-throwing pointcut-ref="pointcutDao" method="adviceAfterThrowing"/>
 		</aop:aspect>
 	</aop:config>
 </beans:beans>

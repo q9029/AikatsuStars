@@ -3,26 +3,17 @@
 		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
-	<servlet>
-		<servlet-name>dispatcherServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:/META-INF/spring/*.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	<servlet>
-		<servlet-name>startupServlet</servlet-name>
-		<servlet-class>com.github.q9029.starstrade.servlet.SystemStartupServlet</servlet-class>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
+	<listener>
+		<listener-class>me.q9029.stars.listener.ContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>me.q9029.stars.listener.SessionListener</listener-class>
+	</listener>
 
-	<servlet-mapping>
-		<servlet-name>dispatcherServlet</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping>
-
+	<filter>
+		<filter-name>respTimeLoggingFilterChain</filter-name>
+		<filter-class>me.q9029.stars.filter.RespTimeLoggingFilter</filter-class>
+	</filter>
 	<filter>
 		<filter-name>encodingFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -37,13 +28,13 @@
 	</filter>
 	<filter>
 		<filter-name>oauthCredentialsFilterChain</filter-name>
-		<filter-class>com.github.q9029.starstrade.filter.OAuthCredentialsFilter</filter-class>
-	</filter>
-	<filter>
-		<filter-name>adminFilterChain</filter-name>
-		<filter-class>com.github.q9029.starstrade.filter.AdminFilter</filter-class>
+		<filter-class>me.q9029.stars.filter.OAuthCredentialsFilter</filter-class>
 	</filter>
 
+	<filter-mapping>
+		<filter-name>respTimeLoggingFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	<filter-mapping>
 		<filter-name>encodingFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -56,22 +47,34 @@
 		<filter-name>oauthCredentialsFilterChain</filter-name>
 		<url-pattern>/job/*</url-pattern>
 	</filter-mapping>
-	<filter-mapping>
-		<filter-name>adminFilterChain</filter-name>
-		<url-pattern>/job/*</url-pattern>
-	</filter-mapping>
 
-	<listener>
-		<listener-class>com.github.q9029.starstrade.listener.SystemServletContextListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>com.github.q9029.starstrade.listener.SystemHttpSessionListener</listener-class>
-	</listener>
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:/META-INF/spring/*.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!--
+	Springのコンテナを利用するなど、リスナでは行えない
+	初期化処理が存在する場合はこの方法を利用する。
+	※起動時の呼出順について要確認
+	<servlet>
+		<servlet-name>startupServlet</servlet-name>
+		<servlet-class>com.github.q9029.starstrade.servlet.SystemStartupServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	-->
 
-	<session-config>
-		<session-timeout>30</session-timeout>
-	</session-config>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
 
+	<!--
+	必要か再度検証する
 	<welcome-file-list>
 		<welcome-file>/</welcome-file>
 	</welcome-file-list>
@@ -79,4 +82,9 @@
 	<error-page>
 		<location>/E404</location>
 	</error-page>
+	-->
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
 </web-app>
