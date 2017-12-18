@@ -10,6 +10,11 @@ public class ServiceException extends RuntimeException {
 
 	private HttpStatus status;
 
+	public ServiceException(HttpStatus status, String message) {
+		super(message);
+		this.status = status;
+	}
+
 	public ServiceException(HttpStatus status, Exception ex) {
 		super(ex);
 		this.status = status;

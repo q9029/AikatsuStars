@@ -1,7 +1,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html" isELIgnored="false"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<c:import url="/WEB-INF/view/layout/layout.jsp">
+<c:import url="/WEB-INF/resources/layouts/main.jsp">
 	<c:param name="content">
 		<!--
 		<div class="container">

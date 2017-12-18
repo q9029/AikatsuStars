@@ -10,9 +10,9 @@
 		<link rel="stylesheet" href="https://q9029.github.io/starstrade/css/aikatsustyle.css"/>
 	</head>
 	<body>
-		<c:import url="/WEB-INF/view/layout/layout-header.jsp"/>
+		<c:import url="/WEB-INF/resources/layouts/header.jsp"/>
 		<div class="contents container-fluid">${param.content}</div>
-		<c:import url="/WEB-INF/view/layout/layout-footer.jsp"/>
+		<c:import url="/WEB-INF/resources/layouts/footer.jsp"/>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	</body>
