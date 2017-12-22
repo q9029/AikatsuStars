@@ -46,6 +46,7 @@ public class TraceLoggingProxy {
 	}
 
 	private void log(JoinPoint joinPoint, String message) {
+
 		// TRACEレベルが出力可能か
 		if (logger.isTraceEnabled()) {
 
