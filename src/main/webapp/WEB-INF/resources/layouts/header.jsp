@@ -14,7 +14,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<c:if var='isAnonymous' test='${empty sessionScope.access_token}'>
+					<c:if var='isAnonymous' test='${empty sessionScope.screen_name}'>
 						<li><a class="navbar-link" href="/signin">ログイン</a></li>
 					</c:if>
 					<c:if test='${!isAnonymous}'>
@@ -22,7 +22,7 @@
 						<li><a class="navbar-link" href="/cardlist">カードリスト</a></li>
 						<li><a class="navbar-link" href="/search">募集検索</a></li>
 						<li>
-							<a class="navbar-link" href="/<c:out value='${sessionScope.screen_name}'/>'">
+							<a class="navbar-link" href="/${sessionScope.screen_name}">
 								<c:out value='${sessionScope.screen_name}'/>
 							</a>
 						</li>
