@@ -14,7 +14,7 @@
 			</div>
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<c:if var='isAnonymous' test='${empty sessionScope.oauth_verifier}'>
+					<c:if var='isAnonymous' test='${empty sessionScope.access_token}'>
 						<li><a class="navbar-link" href="/signin">ログイン</a></li>
 					</c:if>
 					<c:if test='${!isAnonymous}'>
